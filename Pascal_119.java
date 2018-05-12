@@ -11,12 +11,8 @@ public class Pascal_119 {
         result = getRow(rowIndex-1);
         result.add(1);
         if (rowIndex>1) {
-            int temp = result.get(rowIndex - 1);
-            for (int i = rowIndex - 1; i > 0; i--) {
-                result.remove(i);
-                result.add(i, temp + result.get(i - 1));
-                temp = result.get(i - 1);
-            }
+            for (int i = rowIndex - 1; i > 0; i--)
+                result.set(i,result.get(i)+result.get(i - 1));
         }
         return result;
     }
