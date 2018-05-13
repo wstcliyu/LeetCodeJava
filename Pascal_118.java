@@ -21,10 +21,6 @@ public class Pascal_118 {
         List<List<Integer>> testList = generate(testNumRows);
         // Use of foreach
         for (List<Integer> i : testList)
-<<<<<<< HEAD
             System.out.println(i);
-=======
-        System.out.println(i);
->>>>>>> e93ad0b6920f48e77ca63f5ee0126966304f7443
     }
 }
