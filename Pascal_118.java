@@ -19,6 +19,8 @@ public class Pascal_118 {
     public static void main (String args[]) {
         int testNumRows = 5;
         List<List<Integer>> testList = generate(testNumRows);
-        System.out.println(testList);
+        // Use of foreach
+        for (List<Integer> i : testList)
+        System.out.println(i);
     }
 }
