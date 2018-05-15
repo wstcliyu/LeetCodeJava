@@ -1,7 +1,7 @@
 public class Third_414 {
     public static int thirdMax(int[] nums) {
 
-        /** Most voted solution
+        /** Most voted solution(Similar 628)
          Integer max1 = null;
          Integer max2 = null;
          Integer max3 = null;
