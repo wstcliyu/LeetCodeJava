@@ -1,9 +1,12 @@
 public class Complex_537 {
     public static String complexNumberMultiply(String a, String b) {
         /* Standard solution, clear writing, should remember
-         * String.split() Integer.parseInt(string)
+         * String_Object.split() Integer.parseInt(string)
+         * Regular Expression
         String x[] = a.split("\\+|i");
         String y[] = b.split("\\+|i");
+        // \\ in JAVA means \ in other languages
+        // | means or
         int a_real = Integer.parseInt(x[0]);
         int a_img = Integer.parseInt(x[1]);
         int b_real = Integer.parseInt(y[0]);
