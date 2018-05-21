@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class SingleNumber_260 {
-    public static int[] singleNumber(int[] nums) {
+    private static int[] singleNumber(int[] nums) {
         int[] res = new int[2];
         int xor = 0;
         for (int n:nums)
