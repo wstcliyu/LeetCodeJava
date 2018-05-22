@@ -3,6 +3,7 @@ import java.util.Set;
 
 public class BulbSwitcher_672 {
     public static int flipLights(int n, int m) {
+        // Integer.valueOf("111111",2) convert 111111 to binary
         Set<Integer> seen = new HashSet<>();
         n = Math.min(n,6);
         int op[] = new int[4];
