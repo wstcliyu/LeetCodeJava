@@ -20,9 +20,7 @@ public class TwoSum_167 {
         target -= numbers[left];
         while (left < right) {
             int mid = (left + right) / 2;
-            if (numbers[mid] == target)
-                return mid;
-            else if (numbers[mid] > target)
+            if (numbers[mid] > target)
                 right = mid - 1;
             else if (numbers[mid + 1] > target) // should use > rather than >=, otherwise it goes wrong when numbers[mid+1]==target
                 return mid;
@@ -36,9 +34,7 @@ public class TwoSum_167 {
         target -= numbers[right];
         while (left < right) {
             int mid = (left + right) / 2;
-            if (numbers[mid] == target)
-                return mid;
-            else if (numbers[mid] < target)
+            if (numbers[mid] < target)
                 left = mid + 1;
             else if (numbers[mid - 1] < target)
                 return mid;
