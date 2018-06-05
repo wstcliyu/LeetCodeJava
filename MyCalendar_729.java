@@ -3,7 +3,7 @@ public class MyCalendar_729 {
     int[] ed;
     int bookCount;
 
-    public MyCalendar() {
+    public MyCalendar_729() {
         st = new int[1000];
         ed = new int[1000];
         bookCount = 0;
@@ -20,6 +20,7 @@ public class MyCalendar_729 {
     }
 }
 /* Standard solution
+ * TreeMap floorKey() ceilingKey()
 class MyCalendar {
     TreeMap<Integer, Integer> calendar;
 
@@ -40,7 +41,7 @@ class MyCalendar {
 }
 */
 
-/*
+/* Good Submission, but I think it is BST, not Segment Tree
 class MyCalendar {
 
     private class SegmentTree {
