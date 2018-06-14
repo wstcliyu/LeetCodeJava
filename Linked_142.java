@@ -11,7 +11,7 @@ public class Linked_142 {
         ListNode first = head;
         ListNode second = head;
         while (first != null) {
-            // Avoid NullPointerException
+            //  Avoid NullPointerException
             first = first.next;
             if (first == null)
                 return null;
