@@ -1,49 +1,19 @@
 import java.util.Arrays;
 
 public class TwoSum_167 {
-    // Good submission
-    /*
-    public int[] twoSum(int[] numbers, int target) {
-        boolean isBegin = true;
-        int [] result = new int [2];
-        int temp = 0, before = 0, end = numbers.length, index = 0;
-        while(before<end){
-            if(isBegin){
-                temp = target - numbers[before];
-                index = Arrays.binarySearch(numbers, before, end, temp);
-                if(index > 0){
-                    result[0] = before + 1;
-                    result[1] = index + 1;
-                    return result;
-                }else{
-                    end = -index - 1 - 1;
-                    isBegin = false;
-                }
-            }else{
-                temp = target - numbers[end];
-                index = Arrays.binarySearch(numbers, before, end, temp);
-                if(index > 0){
-                    result[0] = index + 1;
-                    result[1] = end + 1;
-                    return result;
-                }else{
-                    before = -index - 1;
-                    isBegin = true;
-                }
-            }
-        }
-        return result;
-    }
-    */
-
     public static int[] twoSum(int[] numbers, int target) {
-        return twoSumHelper_167(numbers, target, 0, numbers.length-1);
+        int[] res = twoSumHelper_167(numbers, target, 0, numbers.length-1);
+        if (res != null) {
+            res[0]++;
+            res[1]++;
+        }
+        return res;
     }
 
     public static int[] twoSumHelper_167(int[] numbers, int target, int left, int right) {
         while (left < right) {
             if (numbers[left]+numbers[right] == target)
-                return new int[]{left+1, right+1};
+                return new int[]{left, right};
             if (numbers[left]+numbers[right] < target)
                 left = moveLeftTo(numbers, target, left, right);
             else
@@ -52,8 +22,6 @@ public class TwoSum_167 {
         return null;
     }
 
-
-    // This is a very good practice for binary search
     // moverRightTo() returns the index of the largest number <= target - numbers[left]
     public static int moveRightTo(int[] numbers, int target, int left, int right) {
         target -= numbers[left];
@@ -74,6 +42,7 @@ public class TwoSum_167 {
         return left;
         */
     }
+
     // moverLeftTo() returns the index of the smallest number >= target - numbers[right]
     public static int moveLeftTo(int[] numbers, int target, int left, int right) {
         target -= numbers[right];
