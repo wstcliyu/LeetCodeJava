@@ -1,4 +1,4 @@
-public class AddBinary_97 {
+public class AddBinary_67 {
     public static String addBinary(String a, String b) {
         int i = a.length()-1;
         int j = b.length()-1;
