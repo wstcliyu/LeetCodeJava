@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Permutations_46 {
     // Third voted solution (Iterative DP)
     // Insert nums[k+1] into every possible position of the permutations of first k elements
-    // Why it is not slow ?
+    // Why it is not slow ? Because the sum of k! (k=1,...,n) is still O(n!)
     /*
     public List<List<Integer>> permute(int[] num) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
