@@ -1,6 +1,25 @@
 import java.util.Arrays;
 
 public class Palindrome_132 {
+    // Most voted solution
+    // Space O(n)
+    public int minCut(String s) {
+        if (s == null || s.length() <= 1)
+            return 0;
+        int len = s.length();
+        int[] cut = new int[len+1]; // number of cuts for the first k characters
+        for (int i=0; i<=len; i++)
+            cut[i] = i-1;
+        for (int i=0; i<len; i++) {
+            for (int j=0; i-j>=0 && i+j<len && s.charAt(i-j) == s.charAt(i+j); j++)
+                cut[i+j+1] = Math.min(cut[i+j+1], 1+cut[i-j]);
+            for (int j=0; i-j-1>=0 && i+j<len && s.charAt(i-j-1) == s.charAt(i+j); j++)
+                cut[i+j+1] = Math.min(cut[i+j+1], 1+cut[i-j-1]);
+        }
+        return cut[len];
+    }
+    // My first solution
+    /*
     public int minCut(String s) {
         if (s == null || s.length() <= 1)
             return 0;
@@ -31,6 +50,7 @@ public class Palindrome_132 {
         }
         return true;
     }
+    */
     public static void main(String[] args) {
         Palindrome_132 test = new Palindrome_132();
         System.out.println(test.minCut("aab"));
