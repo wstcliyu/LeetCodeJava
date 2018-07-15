@@ -62,7 +62,7 @@ public class Target_494 {
 
     // My first solution with recursion
     // Time O(2^n)
-    // Space?
+    // Space O(n)
     /*
     public int findTargetSumWays(int[] nums, int S) {
         return helper(nums, S, nums.length-1);
