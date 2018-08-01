@@ -10,7 +10,7 @@ public class Binary_94 {
 
     // Iterative using a stack (Template can be found in Binary_145)
     // Time: O(n)
-    // Space: Worst O(n), Average O(logn)
+    // Space: O(n)
     /*
     public List<Integer> inorderTraversal(TreeNode root) {
         LinkedList<Integer> result = new LinkedList<>();
@@ -33,6 +33,8 @@ public class Binary_94 {
 
     // Morris traversal
     // Iterative without stack
+    // Time: O(n)
+    // Space: O(n)
     /*
     Step 1: Initialize current as root
 
