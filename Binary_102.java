@@ -19,12 +19,12 @@ public class Binary_102 {
             List<Integer> level = new ArrayList<>();
             int len = q.size();
             for (int i=0; i<len; i++) {
-                TreeNode tmp = q.peek();
+                TreeNode tmp = q.poll();
+                level.add(tmp.val);
                 if (tmp.left != null)
                     q.add(tmp.left);
                 if (tmp.right != null)
                     q.add(tmp.right);
-                level.add(q.poll().val);
             }
             res.add(level);
         }
