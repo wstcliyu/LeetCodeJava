@@ -12,6 +12,8 @@ public class Average_637 {
 
 
     // Approach #1 DFS in standard solution
+    // Time: O(n), n is the number of all nodes
+    // Space: O(h), h is the maximum depth of the tree, because the length of count and res is h
     /*
     public List < Double > averageOfLevels(TreeNode root) {
         List < Integer > count = new ArrayList < > ();
