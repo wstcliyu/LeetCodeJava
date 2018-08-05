@@ -8,7 +8,7 @@ public class Random_528 {
     Random random;
     int[] wSum;
 
-    public Solution(int[] w) {
+    public Random_528(int[] w) {
         random = new Random();
         wSum = new int[w.length];
         wSum[0] = w[0];
