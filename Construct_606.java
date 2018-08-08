@@ -9,6 +9,10 @@ public class Construct_606 {
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
+
+    // https://leetcode.com/problems/construct-string-from-binary-tree/solution/
+
+
     // Standard Solution Approach #1 Using Recursion
     // Time: O(n). The preorder traversal is done over the nn nodes of the given Binary Tree.
     // Space: O(n). The depth of the recursion tree can go upto nn in case of a skewed tree.
