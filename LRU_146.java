@@ -2,6 +2,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+// I submitted the code to the leetcode website, but it says cannot find symbol: class LRUCache.
+// After I added "public" at the very beginning before "class LRUCache", the code got accepted.
+
 public class LRU_146 {
 
     public class DLinkedNode {
@@ -49,11 +53,16 @@ public class LRU_146 {
     }
 
     public int get(int key) {
-        if (!cache.containsKey(key))
+        if (!cache.containsKey(key)) {
+            // Debug
+            // System.out.println(-1);
             return -1;
+        }
         DLinkedNode node = cache.get(key);
         removeNode(node);
         addNode(node);
+        // Debug
+        // System.out.println(node.value);
         return node.value;
     }
 
@@ -112,4 +121,17 @@ public class LRU_146 {
         }
     }
     */
+
+    public static void main(String[] args) {
+        LRU_146 cache = new LRU_146( 2 /* capacity */ );
+        cache.put(1, 1);
+        cache.put(2, 2);
+        cache.get(1);       // returns 1
+        cache.put(3, 3);    // evicts key 2
+        cache.get(2);       // returns -1 (not found)
+        cache.put(4, 4);    // evicts key 1
+        cache.get(1);       // returns -1 (not found)
+        cache.get(3);       // returns 3
+        cache.get(4);       // returns 4
+    }
 }
