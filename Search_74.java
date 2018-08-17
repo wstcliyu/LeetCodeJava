@@ -11,7 +11,7 @@ public class Search_74 {
             int tmp = matrix[mid / col][mid % col];
             if (tmp == target)
                 return true;
-            if (tmp > target)
+            else if (tmp > target)
                 r = mid;
             else
                 l = mid + 1;
