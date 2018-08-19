@@ -6,6 +6,7 @@ public class Intersection_349 {
     public static int[] intersection(int[] nums1, int[] nums2) {
         // My intuitive solution, O(n) time
         // Why HashSet_Object.contains() has O(1) time complexity?
+        /*
         Set<Integer> n1 = new HashSet<>();
         Set<Integer> intersect = new HashSet<>();
         for (Integer i:nums1)
@@ -19,6 +20,8 @@ public class Intersection_349 {
         for (Integer i:intersect)
             res[j++] = i;
         return res;
+        */
+
 
         /* Arrays.sort() the two arrays, O(nlogn) time
          * Then two pointers traverse the two sorted arrays respectively
@@ -44,6 +47,20 @@ public class Intersection_349 {
             res[jj++] = ii;
         return res;
         */
+
+        // Sort one array and use binary search
+        // If given a huge but sorted array, consider binary search
+        HashSet<Integer> intersect = new HashSet<>();
+        Arrays.sort(nums2);
+        for (int n : nums1) {
+            if (Arrays.binarySearch(nums2, n) >= 0)
+                intersect.add(n);
+        }
+        int[] res = new int[intersect.size()];
+        int j = 0;
+        for (Integer i:intersect)
+            res[j++] = i;
+        return res;
     }
     public static void main (String args[]) {
         int[] testNums1 = {1,2,2,1};
