@@ -19,7 +19,7 @@ public class test implements testInterface {
         q.add(6);
         q.add(7);
         q.add(1);
-        q.remove(1);
+        q.remove(2);
         System.out.println(q);
         new test().print();
     }
