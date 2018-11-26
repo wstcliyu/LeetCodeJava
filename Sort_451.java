@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Sort_451 {
     // Most voted solution using priority queue
+    /*
     public String frequencySort(String s) {
         Map<Character, Integer> map = new HashMap<>();
         for (char c : s.toCharArray())
@@ -18,6 +19,7 @@ public class Sort_451 {
         }
         return sb.toString();
     }
+    */
 
 
     // Most voted solution using buckets
@@ -46,7 +48,7 @@ public class Sort_451 {
     */
 
 
-    /*
+
     public String frequencySort(String s) {
         HashMap<Character, Integer> freq = new HashMap<>();
         ArrayList<Character> letters = new ArrayList<>();
@@ -56,13 +58,15 @@ public class Sort_451 {
             freq.put(c, 1 + freq.getOrDefault(c, 0));
         }
         // letters.sort((a, b) -> a - b);
-        letters.sort((a, b) -> freq.get(a) == freq.get(b) ? a - b : freq.get(b) - freq.get(a));
+        // objs.sort(Comparator.comparing((Obj o) -> o.first).thenComparing(o -> o.second).thenComparingInt(o -> o.third));
+        letters.sort(Comparator.comparing((Character c) -> (freq.get(c))).reversed().thenComparing(c -> c));
+        // letters.sort((a, b) -> freq.get(a) == freq.get(b) ? a - b : freq.get(b) - freq.get(a));
         StringBuilder sb = new StringBuilder();
         for (char c : letters)
             sb.append(c);
         return sb.toString();
     }
-    */
+
 
     public static void main(String[] args) {
         Sort_451 test = new Sort_451();
@@ -78,8 +82,6 @@ public class Sort_451 {
         // letters.sort((a, b) -> a-b);
         System.out.println(freq.get('e'));
         System.out.println(freq.get('l'));
-        for (char c : letters)
-            System.out.print(c);
         System.out.println(System.lineSeparator() + test.frequencySort(myS));
     }
 }
