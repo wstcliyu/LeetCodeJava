@@ -1,4 +1,4 @@
-public class Mean_746 {
+public class Min_746 {
     public int minCostClimbingStairs(int[] cost) {
         int len = cost.length;
         int[] dp = new int[len + 1];
