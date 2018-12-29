@@ -28,7 +28,7 @@ public class Palindromic_647 {
             // the following while loop will not execute
 
             // If P[mirr] >= right - i, it means that the longest palindrome substring with center at mirr
-            // is within the left boundary corresponding to center and right, then P[i] >= right - i,
+            // exceeds the left boundary corresponding to center and right, then P[i] >= right - i,
             // the following while loop will execute to expand the palindrome substring with center at i
 
             while (T[i + P[i] + 1] == T[i - P[i] - 1])
