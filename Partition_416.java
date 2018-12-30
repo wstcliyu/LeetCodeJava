@@ -10,6 +10,13 @@ public class Partition_416 {
         int s = sum/2;
         int[] dp = new int[s + 1];
         dp[0] = 1;
+        /*
+        for (int n : nums) {
+            for (int i = s; i >= n; i--)
+                dp[i] += dp[i - n]; 
+        }
+        return dp[s]!=0;
+        */
         for (int n : nums) {
             for (int i = s; i >= n; i--)
                 dp[i] |= dp[i - n];
