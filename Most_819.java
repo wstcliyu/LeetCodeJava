@@ -7,6 +7,7 @@ public class Most_819 {
     // Comparator for entries of a map: Map.Entry.comparingByValue()
     public static String mostCommonWord(String paragraph, String[] banned) {
         HashSet<String> ban = new HashSet<>(Arrays.asList(banned));
+        // String[] words = paragraph.replaceAll("\\p{Punct}", " ").toLowerCase().split("\\s+");
         String[] words = paragraph.replaceAll("\\pP", "").toLowerCase().split("\\s+");
         HashMap<String, Integer> count = new HashMap<>();
         for (String word : words)
