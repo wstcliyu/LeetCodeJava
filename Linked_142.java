@@ -8,25 +8,22 @@ public class Linked_142 {
         }
     }
     public ListNode detectCycle(ListNode head) {
-        ListNode first = head;
-        ListNode second = head;
-        while (first != null) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null) {
             //  Avoid NullPointerException
-            first = first.next;
-            if (first == null)
+            if (fast.next == null || fast.next.next == null)
                 return null;
-            first = first.next;
-            if (first == null)
-                return null;
-            second = second.next;
-            if (first == second)
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow)
                 break;
         }
-        first = head;
-        while (first != second) {
-            first = first.next;
-            second = second.next;
+        fast = head;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
         }
-        return first;
+        return fast;
     }
 }

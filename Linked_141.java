@@ -1,4 +1,4 @@
-public class LinkedListCycle_141 {
+public class Linked_141 {
     public static class ListNode {
         int val;
         ListNode next;
@@ -10,8 +10,8 @@ public class LinkedListCycle_141 {
         ListNode slow = head;
         ListNode fast = head;
         while (fast != null && fast.next != null) {
-                slow = slow.next;
-                fast = fast.next.next;
+            fast = fast.next.next;
+            slow = slow.next;
             if (slow == fast)
                 return true;
         }
