@@ -1,20 +1,21 @@
 public class Search_35 {
     public static int searchInsert(int[] nums, int target) {
+        // int p = Arrays.binarySearch(nums, target);
+        // return p < 0 ? - p - 1 : p;
         int n = nums.length;
-        int left = 0, right = n - 1;
-        int mid;
-        while (true) {
-            if (target > nums[right])
-                return right + 1;
-            if (target < nums[left])
-                return left;
-            mid = (left + right) / 2;
+        int left = 0, right = n;
+        while (left < right) {
+            int mid = (left + right) / 2;
             if (nums[mid] == target)
                 return mid;
-            if (nums[mid] > target) {
-                right = mid - 1;
-            } else left = mid + 1;
+            if (nums[mid] < target) 
+                left = mid + 1;
+            else if (mid == 0 || nums[mid - 1] < target)
+                return mid;
+            else
+                right = mid;
         }
+        return left;
     }
 
     public static void main (String args[]) {
