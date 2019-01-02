@@ -19,7 +19,7 @@ public class Binary_102 {
             List<Integer> level = new ArrayList<>();
             int len = q.size();
             for (int i=0; i<len; i++) {
-                TreeNode tmp = q.poll();
+                TreeNode tmp = q.removeFirst();
                 level.add(tmp.val);
                 if (tmp.left != null)
                     q.add(tmp.left);
