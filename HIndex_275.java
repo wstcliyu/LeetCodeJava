@@ -24,21 +24,19 @@ public class HIndex_275 {
             return 0;
         if (citations.length == 1)
             return citations[0] == 0 ? 0 : 1;
-        Arrays.sort(citations);
         int len = citations.length;
-        int l = -1;
-        int r = len - 1;
+        int l = 0, r = len;
         while (l < r) {
             int mid = (l + r) / 2;
-            int h = len - mid - 1;
-            if ((mid < 0 || citations[mid] <= h) && citations[mid + 1] >= h)
+            int h = len - mid;
+            if ((mid == 0 || citations[mid - 1] <= h) && citations[mid] >= h)
                 return h;
-            if (citations[mid + 1] < h)
+            if (citations[mid] < h)
                 l = mid + 1;
-            else if (citations[mid] > h)
-                r = mid - 1;
+            else if (citations[mid - 1] > h)
+                r = mid;
         }
-        return len - l - 1;
+        return len - l;
         */
     }
 }
