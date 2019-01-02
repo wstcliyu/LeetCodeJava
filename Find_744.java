@@ -1,18 +1,17 @@
 public class Find_744 {
     public static char nextGreatestLetter(char[] letters, char target) {
         int n = letters.length;
-        if (letters[n-1] <= target)
+        if (letters[n - 1] <= target || letters[0] > target)
             return letters[0];
-        int left = 0;
-        int right = n-1;
+        int left = 1, right = n - 1;
         while (left < right) {
-            int mid = (left+right)/2+1;
+            int mid = (left + right) / 2;
             if (letters[mid] <= target)
                 left = mid + 1;
-            else if (letters[mid-1] <= target)
+            else if (letters[mid - 1] <= target)
                 return letters[mid];
             else
-                right = mid - 1;
+                right = mid;
         }
         return letters[left];
     }
