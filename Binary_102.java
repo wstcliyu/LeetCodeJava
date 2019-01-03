@@ -30,4 +30,22 @@ public class Binary_102 {
         }
         return res;
     }
+
+    // Recursion. Similar with 107.
+    /*
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
+        levelMaker(wrapList, root, 0);
+        return wrapList;
+    }
+    
+    public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
+        if(root == null) return;
+        if(level >= list.size()) 
+            list.add(new LinkedList<Integer>());
+        levelMaker(list, root.left, level+1);
+        levelMaker(list, root.right, level+1);
+        list.get(level).add(root.val);
+    }
+    */
 }
