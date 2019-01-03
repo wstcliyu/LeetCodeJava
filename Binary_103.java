@@ -18,8 +18,10 @@ public class Binary_103 {
         int depth = 0;
         while (!q.isEmpty()) {
             depth++;
-            // Cannot use List<Integer> level =
+            // Here we cannot use List<Integer> level =
             // Because there is no addFirst method for List
+            // If we want to use List<Integer> level =
+            // We must use level.add(0, tmp.val)
             LinkedList<Integer> level = new LinkedList<>();
             int len = q.size();
             for (int i=0; i<len; i++) {
