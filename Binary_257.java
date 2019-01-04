@@ -3,12 +3,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Binary_257 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+    
+    // Refer to the following link for two iterative solutions: dfs+stack and bfs+queue
+    // https://leetcode.com/problems/binary-tree-paths/discuss/68272/Python-solutions-(dfs%2Bstack-bfs%2Bqueue-dfs-recursively).
+    
     public List<String> binaryTreePaths(TreeNode root) {
         // My first solution using recursion
         /*
