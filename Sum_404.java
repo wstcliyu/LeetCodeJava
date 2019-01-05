@@ -31,10 +31,8 @@ public class Sum_404 {
                 else
                     stack.push(node.left);
             }
-            if(node.right != null) {
-                if (node.right.left != null || node.right.right != null)
-                    stack.push(node.right);
-            }
+            if(node.right != null) 
+                stack.push(node.right);
         }
         return ans;
     }
