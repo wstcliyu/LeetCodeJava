@@ -78,4 +78,30 @@ public class Subtree_572 {
             return "null";
         return "#" + t.val + " " + preorder(t.left) + " " + preorder(t.right);
     }
+
+
+    // Most voted solution
+    /*
+    public boolean isSubtree(TreeNode s, TreeNode t) {
+        String spreorder = generatepreorderString(s); 
+        String tpreorder = generatepreorderString(t);
+        
+        return spreorder.contains(tpreorder) ;
+    }
+    public String generatepreorderString(TreeNode s){
+        StringBuilder sb = new StringBuilder();
+        Stack<TreeNode> stacktree = new Stack();
+        stacktree.push(s);
+        while(!stacktree.isEmpty()){
+           TreeNode popelem = stacktree.pop();
+           if(popelem == null)
+              sb.append(",#"); // Appending # inorder to handle same values but not subtree cases
+           else {     
+              sb.append("," + popelem.val);
+              stacktree.push(popelem.right);    
+              stacktree.push(popelem.left);}
+        }
+        return sb.toString();
+    }
+    */
 }
