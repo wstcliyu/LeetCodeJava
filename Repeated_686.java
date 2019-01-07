@@ -1,4 +1,18 @@
 public class Repeated_686 {
+    // Most voted solution
+    // We can use KMP Algorithm to reduce time complexity
+    /*
+    public int repeatedStringMatch(String A, String B) {
+        for (int i = 0, j = 0; i < A.length(); i++) {
+            for (j = 0; j < B.length() && B.charAt(j) == A.charAt((i + j) % A.length()); j++);
+            if (j == B.length()) 
+                return (i + j - 1) / A.length() + 1;
+        }
+        return -1;
+    }
+    */
+
+
     // Standard Solution Approach 1
     // Time Complexity: O(N∗(N+M)), where M, N are the lengths of strings A, B.
     // We create two strings A * q, A * (q+1) which have length at most O(M+N).
