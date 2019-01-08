@@ -3,6 +3,8 @@ import java.util.LinkedList;
 public class Complete_919 {
     // Standard solution using two queues
     // One queue to traverse the tree, the other to store parent nodes under which we can insert child
+
+    // We can also just use one queue traverse. Break the while loop if (node.left == null || node.right == null)
     TreeNode root;
     LinkedList<TreeNode> q;
 
