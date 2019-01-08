@@ -55,13 +55,12 @@ public class Binary_94 {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         TreeNode curr = root;
-        TreeNode pre;
         while (curr != null) {
             if (curr.left == null) {
                 res.add(curr.val);
                 curr = curr.right; // move to next right node
             } else { // has a left subtree
-                pre = curr.left;
+                TreeNode pre = curr.left;
                 while (pre.right != null) { // find rightmost
                     pre = pre.right;
                 }
