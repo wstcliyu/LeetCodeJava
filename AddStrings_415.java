@@ -9,7 +9,9 @@ public class AddStrings_415 {
                 carry += num1.charAt(n1--) - '0';
             if (n2 >= 0)
                 carry += num2.charAt(n2--) - '0';
+            // Be careful to use (a + b + carray) % 10 instead of a + b + carray % 10
             result.insert(0, carry % 10);
+            // Be careful to use (a + b + carray) / 10 instead of a + b + carray / 10
             carry /= 10;
         }
         return result.toString();
