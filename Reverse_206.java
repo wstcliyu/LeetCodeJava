@@ -6,16 +6,40 @@ public class Reverse_206 {
             val = x;
         }
     }
-    public static ListNode reverseList(ListNode head) {
+    // My new solution inspired by Partition_86
+    // This method is like create a new linked list (actually it's not)
+    /*
+    public ListNode reverseList(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = dummy.next;
+            dummy.next = cur;
+            cur = next;
+        }
+        return dummy.next;
+    }
+    */
+
+
+    // Recursive
+    /*
+    public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null)
             return head;
-        /* Recursive
         ListNode p = reverseList(head.next);
         head.next.next = head;
         head.next = null;
         return p;
-        */
-        // Iterative
+    }
+    */
+
+
+    // Iterative
+    public static ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
         ListNode cur = head;
         ListNode prev = null;
         while (cur != null) {
