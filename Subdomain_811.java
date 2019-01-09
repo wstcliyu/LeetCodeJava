@@ -17,8 +17,8 @@ public class Subdomain_811 {
         }
 
         List<String> ans = new ArrayList();
-        for (String dom: counts.keySet())
-            ans.add(counts.get(dom) + " " + dom);
+        for (Map.Entry<String, Integer> entry : counts.entrySet())
+            ans.add(entry.getValue() + " " + entry.getKey());
         return ans;
     }
     public static void main (String args[]) {
