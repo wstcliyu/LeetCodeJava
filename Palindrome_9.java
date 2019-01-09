@@ -8,6 +8,6 @@ public class Palindrome_9 {
             revert = revert * 10 + x % 10;
             x = x/10;
         }
-        reurn x == revert || x == revert/10;
+        return x == revert || x == revert/10;
     }
 }
