@@ -59,7 +59,7 @@ public class Sort_451 {
         }
         // letters.sort((a, b) -> a - b);
         // objs.sort(Comparator.comparing((Obj o) -> o.first).thenComparing(o -> o.second).thenComparingInt(o -> o.third));
-        letters.sort(Comparator.comparing((Character c) -> (freq.get(c))).reversed().thenComparing(c -> c));
+        letters.sort(Comparator.comparing((Character c) -> freq.get(c)).reversed().thenComparing(c -> c));
         // letters.sort((a, b) -> freq.get(a) == freq.get(b) ? a - b : freq.get(b) - freq.get(a));
         StringBuilder sb = new StringBuilder();
         for (char c : letters)
