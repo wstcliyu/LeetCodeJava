@@ -15,11 +15,10 @@ public class Island_463 {
         }
         return islands * 4 - neighbours * 2;
         */
-        int r = grid.length;
-        int l = grid[0].length;
+
         int perimeter = 0;
-        for (int x=0; x<r; x++) {
-            for (int y=0; y<l; y++) {
+        for (int x = 0; x < grid.length; x++) {
+            for (int y = 0; y < grid[0].length; y++) {
                 if (grid[x][y] > 0) {
                     perimeter += grid[x][y] * 4;
                     if (thereIsLand(x - 1, y, grid))
@@ -36,11 +35,7 @@ public class Island_463 {
         return perimeter;
     }
     private static boolean thereIsLand(int x, int y, int[][] grid) {
-        int r = grid.length;
-        int l = grid[0].length;
-        if (x>=0 && x<r && y>=0 && y<l)
-            return grid[x][y]>0;
-        return false;
+        return x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] > 0;
     }
     public static void main (String args[]) {
         int[][] testGrid = {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
