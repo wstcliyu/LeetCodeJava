@@ -27,4 +27,28 @@ public class Shortest_748 {
         }
         return product;
     }
+
+    // My solution
+    /*
+    public String shortestCompletingWord(String licensePlate, String[] words) {
+        int[] freq = getFreq(licensePlate.toLowerCase());
+        String shortest = "1234567890abcdef";
+        for (String word : words) 
+            if (word.length() < shortest.length() && compareArray(freq, getFreq(word))) shortest = word;
+        return shortest;
+    }
+    
+    private int[] getFreq(String str) {
+        int[] freq = new int[26];
+        for (char c : str.toCharArray()) 
+            if (c - 'a' >= 0 && c - 'a' < 26) freq[c - 'a']++;
+        return freq;
+    }
+    
+    private boolean compareArray(int[] freq, int[] f) {
+        for (int i = 0; i < f.length; i++) 
+            if (freq[i] > f[i]) return false;
+        return true;
+    }
+    */
 }
