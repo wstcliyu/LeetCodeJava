@@ -2,6 +2,7 @@ public class HIndex_275 {
     public int hIndex(int[] citations) {
         // Most voted solution
         // The ojective of the loop is to find the critical index i such that (len - i) equals the h-index
+        /*
         int left = 0, len = citations.length, right = len - 1,  mid;
         while(left <= right) {
             mid = (left + right) >> 1;
@@ -16,14 +17,11 @@ public class HIndex_275 {
         // Thus, after last round, if the program doesn't return,
         // it must be right + 1 = left. And citations[right + 1] = citations[left] > len - left
         return len - (right + 1); // Or return len - left;
+        */
 
 
-        // My first solution
-        /*
-        if (citations == null || citations.length == 0)
-            return 0;
-        if (citations.length == 1)
-            return citations[0] == 0 ? 0 : 1;
+        // My solution
+        
         int len = citations.length;
         int l = 0, r = len;
         while (l < r) {
@@ -36,7 +34,7 @@ public class HIndex_275 {
             else if (citations[mid - 1] > h)
                 r = mid;
         }
-        return len - l;
-        */
+        // Or return len - l; because l == r
+        return len - r;        
     }
 }
