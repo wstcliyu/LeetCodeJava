@@ -41,6 +41,26 @@ public class Majority_169 {
     // Standard solution #6 (Boyer-Moore Voting Algorithm)
     // Time O(n) Space O(1)
     /*
+    public int majorityElement(int[] nums) {
+        int count = 0;
+        Integer candidate = null;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        return candidate;
+    }
+    */
+
+
+    // Standard solution #5 (Divide and Conquer)
+    // Time O(nlogn) T(n) = 2T(n/2) + 2n
+    // Space O(logn)
+    /*
     private int countInRange(int[] nums, int num, int lo, int hi) {
         int count = 0;
         for (int i = lo; i <= hi; i++) {
@@ -50,13 +70,7 @@ public class Majority_169 {
         }
         return count;
     }
-    */
-
-
-    // Standard solution #5 (Divide and Conquer)
-    // Time O(nlogn) T(n) = 2T(n/2) + 2n
-    // Space O(logn)
-    /*
+    
     private int majorityElementRec(int[] nums, int lo, int hi) {
         // base case; the only element in an array of size 1 is the majority
         // element.
