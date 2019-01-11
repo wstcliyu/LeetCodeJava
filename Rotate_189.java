@@ -1,21 +1,7 @@
 public class Rotate_189 {
-    public static void rotate(int[] nums, int k) {
-
-        /** My solution using extra array
-        int n = nums.length;
-        k = k%n;
-        if(k == 0)
-            return;
-        int[] temp = new int[n];
-        for (int i=0;i<n;i++)
-            temp[i] = nums[i];
-        for (int i=0; i<n-k; i++)
-            nums[i+k] = temp[i];
-        for (int j=0; j<k; j++)
-            nums[j] = temp[j+n-k];
-        */
-
-        /** Using extra array(similar but better than mine)
+    // Standard Approach #2: Using Extra Array
+    /*
+    public void rotate(int[] nums, int k) {
         int[] a = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
             a[(i + k) % nums.length] = nums[i];
@@ -23,18 +9,38 @@ public class Rotate_189 {
         for (int i = 0; i < nums.length; i++) {
             nums[i] = a[i];
         }
-        */
+    }
+    */
 
+    // Standard Approach #4: Using Reverse
+    /*
+    public void rotate(int[] nums, int k) {
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+    public void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    */
+
+    public static void rotate(int[] nums, int k) {
         int n = nums.length;
-        k = k%n;
+        k = k % n;
         int count = 0;
-        int prev, temp;
-        for(int start=0; count<n; start++) {
+        for(int start = 0; count < n; start++) {
             int current = start;
-            prev = nums[current];
+            int prev = nums[current];
             do {
-                int next = (current+k)%n;
-                temp = nums[next];
+                int next = (current + k) % n;
+                int temp = nums[next];
                 nums[next] = prev;
                 prev = temp;
                 current = next;
