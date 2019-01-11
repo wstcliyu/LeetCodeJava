@@ -1,6 +1,27 @@
 import java.util.Arrays;
 
 public class Shortest_581 {
+    // Standard Solution #4: Using Stack
+    public int findUnsortedSubarray(int[] nums) {
+        Stack < Integer > stack = new Stack < Integer > ();
+        int l = nums.length, r = 0;
+        for (int i = 0; i < nums.length; i++) {
+            while (!stack.isEmpty() && nums[stack.peek()] > nums[i])
+                l = Math.min(l, stack.pop());
+            stack.push(i);
+        }
+        stack.clear();
+        for (int i = nums.length - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && nums[stack.peek()] < nums[i])
+                r = Math.max(r, stack.pop());
+            stack.push(i);
+        }
+        return r - l > 0 ? r - l + 1 : 0;
+    }
+
+
+    // My first solution (Similar with standard solution #4 and #5)
+    /*
     public static int findUnsortedSubarray(int[] nums) {
         int n = nums.length;
         int left = 0, right = n-1;
@@ -40,6 +61,7 @@ public class Shortest_581 {
         }
         return right-left-1;
     }
+    */
     public static void main(String[] args) {
         int[] testNums = {2, 6, 4, 8, 10, 9, 15};
         System.out.println(findUnsortedSubarray(testNums));
