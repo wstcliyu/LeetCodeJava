@@ -1,8 +1,9 @@
 import java.util.Arrays;
 
 public class Spiral_59 {
-    public static int[][] generateMatrix(int n) {
-        /* Similar solution (Walk Through)
+    // Similar with mine
+    /*
+    public int[][] generateMatrix(int n) {
         int[][] ret = new int[n][n];
         int left = 0,top = 0;
         int right = n -1,down = n - 1;
@@ -26,30 +27,26 @@ public class Spiral_59 {
             left ++;
         }
         return ret;
-        */
+    }
+    */
+
+
+    // My solution
+    public static int[][] generateMatrix(int n) {           
         int[][] res = new int[n][n];
-        int mode = 0, step = 0, x = 0, y = -1;
-        while (step < n*n) {
-            if (mode % 4 == 0) {
-                while (y<n-1 && res[x][y+1]==0)
-                    res[x][++y] = ++step;
-            }
-            mode++;
-            if (mode % 4 == 1) {
-                while (x<n-1 && res[x+1][y]==0)
-                    res[++x][y] = ++step;
-            }
-            mode++;
-            if (mode % 4 == 2) {
-                while (y>0 && res[x][y-1]==0)
-                    res[x][--y] = ++step;
-            }
-            mode++;
-            if (mode % 4 == 3) {
-                while (x>0 && res[x-1][y]==0)
-                    res[--x][y] = ++step;
-            }
-            mode++;
+        int step = 0, x = 0, y = -1;
+        while (step < n * n) {
+            while (y < n - 1 && res[x][y + 1] == 0)
+                res[x][++y] = ++step;
+
+            while (x < n - 1 && res[x + 1][y] == 0)
+                res[++x][y] = ++step;
+
+            while (y > 0 && res[x][y - 1] == 0)
+                res[x][--y] = ++step;
+
+            while (x > 0 && res[x - 1][y] == 0)
+                res[--x][y] = ++step;
         }
         return res;
     }
