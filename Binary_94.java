@@ -11,12 +11,12 @@ public class Binary_94 {
     // Iterative using a stack (Template can be found in Binary_145)
     // Time: O(n)
     // Space: O(n)
-    /*
+    
     public List<Integer> inorderTraversal(TreeNode root) {
         LinkedList<Integer> result = new LinkedList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode p = root;
-        while (!stack.isEmpty() || p != null) {
+        while (!stack.empty() || p != null) {
             if (p != null) {
                 stack.push(p);
                 p = p.left;
@@ -25,10 +25,19 @@ public class Binary_94 {
                 result.add(node.val);
                 p = node.right;
             }
+            /*
+            while (p != null) {
+                stack.push(p);
+                p = p.left;
+            }
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            p = node.right;
+            */
         }
         return result;
     }
-    */
+    
 
 
     // Morris traversal
@@ -52,6 +61,8 @@ public class Binary_94 {
 
         b. Go to this left child, i.e., current = current.left
     */
+
+    /*
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         TreeNode curr = root;
@@ -72,4 +83,5 @@ public class Binary_94 {
         }
         return res;
     }
+    */
 }
