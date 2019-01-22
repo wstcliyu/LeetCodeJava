@@ -44,6 +44,7 @@ public class MaxArea_695 {
     */
 
     public static void main (String[] args) {
+        MaxArea_695 test = new MaxArea_695();
         int[][] testGrid = {{0,0,1,0,0,0,0,1,0,0,0,0,0},
                             {0,0,0,0,0,0,0,1,1,1,0,0,0},
                             {0,1,1,0,1,0,0,0,0,0,0,0,0},
@@ -52,6 +53,6 @@ public class MaxArea_695 {
                             {0,0,0,0,0,0,0,0,0,0,1,0,0},
                             {0,0,0,0,0,0,0,1,1,1,0,0,0},
                             {0,0,0,0,0,0,0,1,1,0,0,0,0}};
-        System.out.println(maxAreaOfIsland(testGrid));
+        System.out.println(test.maxAreaOfIsland(testGrid));
     }
 }

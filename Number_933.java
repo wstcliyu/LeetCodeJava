@@ -51,7 +51,7 @@ public class Number_933 {
     */
 
     // Mehod 3: Binary Search ArrayList
-    // Use binary search to find the index of the ceiling of t - 3000, then list.size() - index is the answer
+    // Use binary search to find the index of the ceiling of t - 3000, then list.size() - index is the res
     // binarySearch() cost O(logN)
     /*
     List<Integer> list;

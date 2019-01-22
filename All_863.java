@@ -40,7 +40,7 @@ public class All_863 {
         }
     }
 
-    // Add all nodes 'K - dist' from the node to answer.
+    // Add all nodes 'K - dist' from the node to res.
     public void subtree_add(TreeNode node, int dist) {
         if (node == null) return;
         if (dist == K)

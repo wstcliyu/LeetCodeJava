@@ -39,7 +39,7 @@ public class Combination_377 {
     }
 
     // Recursive solution (Exceeds Time Limit)
-    // Must use cache to store answer to sub-problem (DP)
+    // Must use cache to store res to sub-problem (DP)
     /*
     public static int combinationSum4(int[] nums, int target) {
         if (target == 0)

@@ -43,7 +43,7 @@ public class Maximum_918 {
             if (deque.peekFirst() < j-N)
                 deque.pollFirst();
 
-            // The optimal i is deque[0], for cand. answer P[j] - P[i].
+            // The optimal i is deque[0], for cand. res P[j] - P[i].
             ans = Math.max(ans, P[j] - P[deque.peekFirst()]);
 
             // Remove any i1's with P[i2] <= P[i1].
@@ -65,7 +65,7 @@ public class Maximum_918 {
         for (int x: A)
             S += x;
 
-        // ans1: answer for one-interval subarray
+        // ans1: res for one-interval subarray
         int ans1 = Integer.MIN_VALUE;
         int cur = Integer.MIN_VALUE;
         for (int x: A) {
@@ -73,7 +73,7 @@ public class Maximum_918 {
             ans1 = Math.max(ans1, cur);
         }
 
-        // ans2: answer for two-interval subarray, interior in A[1:]
+        // ans2: res for two-interval subarray, interior in A[1:]
         int ans2 = Integer.MAX_VALUE;
         cur = Integer.MAX_VALUE;
         for (int i = 1; i < A.length; ++i) {
@@ -82,7 +82,7 @@ public class Maximum_918 {
         }
         ans2 = S - ans2;
 
-        // ans3: answer for two-interval subarray, interior in A[:-1]
+        // ans3: res for two-interval subarray, interior in A[:-1]
         int ans3 = Integer.MAX_VALUE;
         cur = Integer.MAX_VALUE;
         for (int i = 0; i < A.length - 1; ++i) {
@@ -106,7 +106,7 @@ public class Maximum_918 {
             ans = Math.max(ans, cur);
         }
 
-        // ans is the answer for 1-interval subarrays.
+        // ans is the res for 1-interval subarrays.
         // Now, let's consider all 2-interval subarrays.
         // For each i, we want to know
         // the maximum of sum(A[j:]) with j >= i+2

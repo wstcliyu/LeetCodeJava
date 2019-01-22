@@ -45,7 +45,7 @@ public class Longest_687 {
 
         // int left = (root.left != null && root.left.val == root.val) ? 1 + getUniDepth(root.left) : 0;
         // We cannot use the above code because we must execute getUniDepth(root.left) in any case
-        // Otherwise, we cannot traverse the whole tree and we will get wrong answer
+        // Otherwise, we cannot traverse the whole tree and we will get wrong res
 
         int left = 1 + getUniDepth(root.left);
         int right = 1 + getUniDepth(root.right);

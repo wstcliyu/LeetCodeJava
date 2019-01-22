@@ -14,7 +14,7 @@ public class Minimum_530 {
     // https://leetcode.com/problems/minimum-absolute-difference-in-bst/discuss/99905/Two-Solutions-in-order-traversal-and-a-more-general-way-using-TreeSet
     // The most common idea is to first inOrder traverse the tree and
     // compare the delta between each of the adjacent values.
-    // It's guaranteed to have the correct answer because it is a BST
+    // It's guaranteed to have the correct res because it is a BST
     // thus inOrder traversal values are sorted
     // Solution 1 - In-Order traverse, time complexity O(N), space complexity O(1).
     Integer prev = null;

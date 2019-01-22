@@ -34,7 +34,7 @@ public class Count_222 {
 
     // It first walks all the way left and right to determine the height
     // and whether it's a full tree, meaning the last row is full.
-    // If so, then the answer is just 2^height-1.
+    // If so, then the res is just 2^height-1.
     // Since always at least one of the two recursive calls is such a full tree,
     // at least one of the two calls immediately stops.
     // Again we have runtime O(log(n)^2).
