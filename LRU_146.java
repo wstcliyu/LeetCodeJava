@@ -86,39 +86,40 @@ public class LRU_146 {
         }
     }
 
-    // My first solution
+
+    // My new solution
     /*
-    HashMap<Integer, Integer> map;
-    Queue<Integer> q;
-    int empty;
-    public LRU_146(int capacity) {
-        map = new HashMap<>();
-        q = new LinkedList<>();
-        empty = capacity;
+    private ArrayDeque<Point> q = new ArrayDeque<>();
+    private int capacity;
+    private HashMap<Integer, Integer> cache;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        cache = new HashMap<>();
     }
 
     public int get(int key) {
-        if (!map.containsKey(key))
-            return -1;
-        q.remove(key);
-        q.add(key);
-        return map.get(key);
+        if (!cache.containsKey(key)) return -1;
+        int val = cache.get(key);
+        q.remove(new Point(key, val));
+        q.addLast(new Point(key, val));
+        return val;
     }
 
     public void put(int key, int value) {
-        if (map.containsKey(key)) {
-            map.put(key, value);
-            q.remove(key);
-            q.add(key);
-        }
-        else {
-            map.put(key, value);
-            q.add(key);
-            if (--empty < 0) {
-                map.remove(q.peek());
-                empty++;
+        if (!cache.containsKey(key)) {
+            q.addLast(new Point(key, value));
+            if (q.size() > capacity) {
+                Point head = q.removeFirst();
+                cache.remove(head.x, head.y);
             }
         }
+        else {
+            int old_val = cache.get(key);
+            q.remove(new Point(key, old_val));
+            q.addLast(new Point(key, value));
+        }
+        cache.put(key, value);
     }
     */
 
