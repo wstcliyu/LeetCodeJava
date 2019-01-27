@@ -89,7 +89,7 @@ public class LRU_146 {
 
     // My new solution
     /*
-    private ArrayDeque<Point> q = new ArrayDeque<>();
+    private ArrayDeque<Integer> q = new ArrayDeque<>();
     private int capacity;
     private HashMap<Integer, Integer> cache;
 
@@ -101,23 +101,22 @@ public class LRU_146 {
     public int get(int key) {
         if (!cache.containsKey(key)) return -1;
         int val = cache.get(key);
-        q.remove(new Point(key, val));
-        q.addLast(new Point(key, val));
+        q.remove(key);
+        q.addLast(key);
         return val;
     }
 
     public void put(int key, int value) {
         if (!cache.containsKey(key)) {
-            q.addLast(new Point(key, value));
+            q.addLast(key);
             if (q.size() > capacity) {
-                Point head = q.removeFirst();
-                cache.remove(head.x, head.y);
+                int head = q.removeFirst();
+                cache.remove(head);
             }
         }
         else {
-            int old_val = cache.get(key);
-            q.remove(new Point(key, old_val));
-            q.addLast(new Point(key, value));
+            q.remove(key);
+            q.addLast(key);
         }
         cache.put(key, value);
     }
