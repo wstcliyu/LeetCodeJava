@@ -4,39 +4,35 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Substring_30 {
+    // Sliding window
     public static List<Integer> findSubstring(String s, String[] words) {
         LinkedList<Integer> res = new LinkedList<>();
-        if (s==null || s.length()==0 || words==null || words.length==0)
-            return res;
-        HashMap<String, Integer> freq = new HashMap<>(), curMap = new HashMap<>();
-        for (String w:words)
-            freq.put(w, 1+freq.getOrDefault(w,0));
+        if (s == null || s.length() == 0 || words == null || words.length == 0) return res;
+        HashMap<String, Integer> freq = new HashMap<>();
+        for (String w : words) freq.put(w, 1 + freq.getOrDefault(w,0));
         int wl = words[0].length();
-        for (int i=0; i<wl; i++) {
+        for (int i = 0; i < wl; i++) {
+            HashMap<String, Integer> curMap = new HashMap<>();
             int start = i, count = 0;
-            for (int end=i; end+wl<=s.length(); end+=wl) {
-                String curStr = s.substring(end, end+wl);
+            for (int end = i; end + wl <= s.length(); end += wl) {
+                String curStr = s.substring(end, end + wl);
                 if (!freq.containsKey(curStr)) {
                     curMap.clear();
                     count = 0;
                     start = end + wl;
-                }
-                else {
-                    curMap.put(curStr, 1+curMap.getOrDefault(curStr,0));
-                    if (curMap.get(curStr) <= freq.get(curStr))
-                        count++;
+                } else {
+                    curMap.put(curStr, 1 + curMap.getOrDefault(curStr,0));
+                    if (curMap.get(curStr) <= freq.get(curStr)) count++;
+
                     while (count == words.length || curMap.get(curStr) > freq.get(curStr)) {
-                        if (count == words.length)
-                            res.add(start);
-                        String tmpStr = s.substring(start, start+wl);
+                        if (count == words.length) res.add(start);
+                        String tmpStr = s.substring(start, start + wl);
                         start += wl;
-                        curMap.put(tmpStr, -1+curMap.get(tmpStr));
-                        if (curMap.get(tmpStr) < freq.get(tmpStr))
-                            count--;
+                        curMap.put(tmpStr, -1 + curMap.get(tmpStr));
+                        if (curMap.get(tmpStr) < freq.get(tmpStr)) count--;
                     }
                 }
             }
-            curMap.clear();
         }
         return res;
     }
