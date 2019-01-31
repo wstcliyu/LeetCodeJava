@@ -1,4 +1,5 @@
 public class String_984 {
+    // String without AAA or BBB
     public String strWithout3a3b(int A, int B) {
         StringBuilder res = new StringBuilder();
         if (B > A) strWithout3a3b(B, A, 'b', 'a', res);
