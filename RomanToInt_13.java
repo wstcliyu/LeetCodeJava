@@ -1,28 +1,33 @@
 public class RomanToInt_13 {
+    // Most voted solution
     public static int romanToInt(String s) {
-        /* Most voted solution
-        int sum=0;
-        if(s.indexOf("IV")!=-1){sum-=2;}
-        if(s.indexOf("IX")!=-1){sum-=2;}
-        if(s.indexOf("XL")!=-1){sum-=20;}
-        if(s.indexOf("XC")!=-1){sum-=20;}
-        if(s.indexOf("CD")!=-1){sum-=200;}
-        if(s.indexOf("CM")!=-1){sum-=200;}
+        int sum = 0;
+        if(s.contains("IV")) sum-=2;
+        if(s.contains("IX")) sum-=2;
+        if(s.contains("XL")) sum-=20;
+        if(s.contains("XC")) sum-=20;
+        if(s.contains("CD")) sum-=200;
+        if(s.contains("CM")) sum-=200;
 
-        char c[]=s.toCharArray();
-        int count=0;
-        for(;count<=s.length()-1;count++) {
-            if (c[count] == 'M') sum += 1000;
-            if (c[count] == 'D') sum += 500;
-            if (c[count] == 'C') sum += 100;
-            if (c[count] == 'L') sum += 50;
-            if (c[count] == 'X') sum += 10;
-            if (c[count] == 'V') sum += 5;
-            if (c[count] == 'I') sum += 1;
+        for (int i = 0; i < s.length(); i++) {
+            switch (s.charAt(i)) {
+                case 'I' : sum += 1; break;
+                case 'V' : sum += 5; break;
+                case 'X' : sum += 10; break;
+                case 'L' : sum += 50; break;
+                case 'C' : sum += 100; break;
+                case 'D' : sum += 500; break;
+                case 'M' : sum += 1000; break;
+            }
         }
+        
         return sum;
-        */
+    }
 
+
+    // My first solution
+    /*
+    public static int romanToInt(String s) {
         int n = s.length();
         int result = 0;
         for (int i=0; i<n; i++) {
@@ -59,6 +64,9 @@ public class RomanToInt_13 {
         }
         return 0;
     }
+    */
+
+
     public static void main(String[] args) {
         System.out.println(romanToInt("MCMXCIV"));
         System.out.println("Output should be 1994");
