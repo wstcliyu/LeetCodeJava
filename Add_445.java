@@ -21,6 +21,9 @@ public class Add_445 {
             s2.push(l2.val);
             l2 = l2.next;
         }
+
+        // Online solution
+        /*
         int sum = 0;
         ListNode head = new ListNode(0);
         while (!s1.empty() || !s2.empty()) {
@@ -33,5 +36,20 @@ public class Add_445 {
             head = newHead;
         }
         return head.val == 0 ? head.next : head;
+        */
+
+
+        // My version
+        int sum = 0;
+        ListNode dummy = new ListNode(0);
+        while (!s1.empty() || !s2.empty() || sum > 0) {
+            if (!s1.empty()) sum += s1.pop();
+            if (!s2.empty()) sum += s2.pop();
+            ListNode tmp = new ListNode(sum % 10);
+            sum /= 10;
+            tmp.next = dummy.next;
+            dummy.next = tmp;
+        }
+        return dummy.next;
     }
 }
