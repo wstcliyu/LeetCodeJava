@@ -1,4 +1,4 @@
-public class AddTwo_2 {
+public class Add_2 {
     public class ListNode {
         int val;
         ListNode next;
