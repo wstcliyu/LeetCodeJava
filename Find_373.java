@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Find_373 {
     // Similar with Kth_378
+    // Consider a matrix M with M[i][j] = nums1[i] + nums2[j], then it's a sorted array in Kth_378
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         List<int[]> res = new LinkedList<>();
         if (nums1.length == 0 || nums2.length == 0 || k == 0) return res;
