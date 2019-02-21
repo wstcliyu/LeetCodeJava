@@ -15,7 +15,7 @@ public class DetectCapital_520 {
             return true;
         return false;
         */
-        return countCapital == n || countCapital == 0 || countCapital == 1 && Characer.isUpperCase(word.charAt(0));
+        return countCapital == n || countCapital == 0 || countCapital == 1 && Character.isUpperCase(word.charAt(0));
     }
     public static void main (String args[]) {
         String testWord = "FlaG";
