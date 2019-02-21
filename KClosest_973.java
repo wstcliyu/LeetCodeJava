@@ -5,6 +5,14 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class KClosest_973 {
+    public static void main(String[] args) {
+        // I wrote this testcase which will cause infinite loop
+        KClosest_973 test = new KClosest_973();
+        int[][] testPoints = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        int[][] res = test.kClosest(testPoints, 2);
+        System.out.println(res.length);
+    }
+
     // Most voted solution
     // Comparator.comparing
     // Arrays.copyOfRange
@@ -16,6 +24,7 @@ public class KClosest_973 {
     */
 
 
+    // Similar with Kth_215 using quick select
     // Standard solution #2: Divide and Conquer
     // Time: O(N) in average case complexity, where N is the length of points
     // Space: O(N)
@@ -32,8 +41,10 @@ public class KClosest_973 {
         int oi = i, oj = j;
         int pivot = dist(new Random().nextInt(j - i + 1) + i);
         // int pivot = dist(ThreadLocalRandom.current().nextInt(i, j));
-
+        
         while (i < j) {
+            // If dist(i) == dist(j) == pivot, then it gets into infinite loop
+            // But the problem description guarantees a result, I think that is probably why this problem doesn't happen
             while (i < j && dist(i) < pivot) i++;
             while (i < j && dist(j) > pivot) j--;
             swap(i, j);
@@ -43,6 +54,27 @@ public class KClosest_973 {
             work(oi, i, K);
         else
             work(i+1, oj, K - (i - oi + 1));
+
+
+        // My version (Refer to Kth_215)
+        /*
+        if (i >= j) return;
+        int oi = i, oj = j;
+        swap(j, new Random().nextInt(j-i+1) + i);
+        int pivot = dist(j);
+
+        while (i < j) {
+            while (i < j && dist(i) < pivot) i++;
+            while (i < j && dist(j) >= pivot) j--;
+            swap(i, j);
+        }
+        swap(i, oj);
+
+        int m = i - oi + 1;
+        if (m == K) return;
+        else if (m > K) work(oi, i-1, K);
+        else work(i+1, oj, K-m);
+        */
     }
 
     public int dist(int i) {
