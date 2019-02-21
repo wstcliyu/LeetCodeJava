@@ -1,6 +1,6 @@
 public class CountBinarySubstrings_696 {
     // Standard solution #2: Linear Scan
-    public int countBinarySubstrings(String s) {
+    public static int countBinarySubstrings(String s) {
         int ans = 0, prev = 0, cur = 1;
         for (int i = 1; i < s.length(); i++) {
             if (s.charAt(i-1) != s.charAt(i)) {
