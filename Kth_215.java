@@ -12,10 +12,24 @@ public class Kth_215 {
 
       // return the index of the kth smallest number
     private int quickSelect(int[] a, int lo, int hi, int k) {
+        int i = lo, j = hi, pivot = a[hi];
+
+        // My version
+        // put nums that are < pivot to the left
+        // put nums that are >= pivot to the right
+        /*
+        while (i < j) {
+            while (i < j && a[i] < pivot) i++;
+            while (i < j && a[j] >= pivot) j--;
+            swap(a, i, j);
+        }
+        swap(a, i, hi);
+        */
+
+
         // use quick sort's idea
         // put nums that are <= pivot to the left
         // put nums that are  > pivot to the right
-        int i = lo, j = hi, pivot = a[hi];
         while (i < j) {
             if (a[i++] > pivot) swap(a, --i, --j);
         }
