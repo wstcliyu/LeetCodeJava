@@ -1,5 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 public class Min_155 {
     // Most voted solution uses only one stack
