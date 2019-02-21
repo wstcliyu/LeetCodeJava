@@ -12,12 +12,16 @@ public class Kth_215 {
 
       // return the index of the kth smallest number
     private int quickSelect(int[] a, int lo, int hi, int k) {
-        int i = lo, j = hi, pivot = a[hi];
+        int i = lo, j = hi;
+        int pivot = a[hi];
 
         // My version
         // put nums that are < pivot to the left
         // put nums that are >= pivot to the right
+        // Use a random pivot and do not need to shuffle the whole array
         /*
+        swap(nums, j, new Random().nextInt(j-i+1) + i);
+        int pivot = a[hi];
         while (i < j) {
             while (i < j && a[i] < pivot) i++;
             while (i < j && a[j] >= pivot) j--;
