@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Remove_80 {
     // My updated solution using write, read, anchor
-    public int removeDuplicates(int[] nums) {
+    public static int removeDuplicates(int[] nums) {
         int write = 0, read = 0, anchor = 0;
         while (read < nums.length) {
             while (read < nums.length && nums[read] == nums[anchor])
