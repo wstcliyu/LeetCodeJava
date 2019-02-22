@@ -75,6 +75,7 @@ public class Top_347 {
 
 
     // Using TreeMap whose <key, value> = <frequency, num>
+    /*
     public List<Integer> topKFrequent(int[] nums, int k) {
         HashMap<Integer, Integer> count = new HashMap<>();
         for (int num : nums) count.put(num, 1 + count.getOrDefault(num, 0));
@@ -90,4 +91,5 @@ public class Top_347 {
         while (res.size() < k) res.addAll(freqMap.pollLastEntry().getValue());
         return res;
     }
+    */
 }
