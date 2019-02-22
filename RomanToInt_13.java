@@ -1,5 +1,27 @@
 public class RomanToInt_13 {
+    // My updated solution
+    public int romanToInt(String s) {
+        if(s.isEmpty()) return 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        int sum = 0, prev = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int num = map.get(s.charAt(i));
+            sum += num;
+            if (num > prev) sum -= 2*prev; 
+            prev = num;
+        }
+        return sum;
+    }
+
     // Most voted solution
+    /*
     public static int romanToInt(String s) {
         int sum = 0;
         if(s.contains("IV")) sum-=2;
@@ -23,6 +45,7 @@ public class RomanToInt_13 {
         
         return sum;
     }
+    */
 
 
     // My first solution
