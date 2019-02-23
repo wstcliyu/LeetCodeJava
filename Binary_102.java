@@ -40,12 +40,13 @@ public class Binary_102 {
     }
     
     public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
-        if(root == null) return;
-        if(level >= list.size()) 
-            list.add(new LinkedList<Integer>());
+        if (root == null) return;
+        if (level >= list.size()) list.add(new LinkedList<Integer>());
+        list.get(level).add(root.val);
         levelMaker(list, root.left, level+1);
         levelMaker(list, root.right, level+1);
-        list.get(level).add(root.val);
+        // list.get(level).add(root.val);
+        // Either pre-order or post-order is OK here.
     }
     */
 }
