@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MinimizeCost {
+public class MST {
     // Amazon OA 2: MST
 
     public class Connections {
@@ -28,10 +28,14 @@ public class MinimizeCost {
                 map.put(a, b);
             }
         }
-        String root = map.get(res.get(0).first);
+
+        // Check whether all the vertices belong to the same union
+        // Actually if there are V-1 edges in our list, this check is non-necessary
+        // But in this problem, we do not know the number of all vertices V
+        String root = find(res.get(0).first);
         for (Connections con : res) {
-            String a = map.get(con.first);
-            String b = map.get(con.second);
+            String a = find(con.first);
+            String b = find(con.second);
             if (!root.equals(a) || !root.equals(b)) return new ArrayList<>();
         }
         return res;
@@ -60,7 +64,7 @@ public class MinimizeCost {
     */
 
     public static void main(String[] args) {
-        MinimizeCost test = new MinimizeCost();
+        MST test = new MST();
         List<Connections> con = new LinkedList<>();
         con.add(test.new Connections("A", "B", 1));
         con.add(test.new Connections("C", "B", 4));
