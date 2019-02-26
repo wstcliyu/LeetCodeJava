@@ -4,22 +4,20 @@ import java.util.Random;
 public class Kth_215 {
     // Quick Select
     public int findKthLargest(int[] a, int k) {
-        shuffle(a);
+        // shuffle(a);
         int n = a.length;
-        int p = quickSelect(a, 0, n - 1, n - k + 1);
+        int p = quickSelect(a, 0, n - 1, k);
         return a[p];
     }
 
-      // return the index of the kth smallest number
     private int quickSelect(int[] a, int lo, int hi, int k) {
         int i = lo, j = hi;
-        int pivot = a[hi];
 
         // My version
         // put nums that are < pivot to the left
         // put nums that are >= pivot to the right
         // Use a random pivot and do not need to shuffle the whole array
-        /*
+        
         swap(nums, j, new Random().nextInt(j-i+1) + i);
         int pivot = a[hi];
         while (i < j) {
@@ -28,12 +26,17 @@ public class Kth_215 {
             swap(a, i, j);
         }
         swap(a, i, hi);
-        */
-
+        
+        int m = hi - i + 1;
+        if (m == k)     return i;
+        else if (m > k) return quickSelect(nums, i + 1, hi, k);
+        else            return quickSelect(nums, lo, i - 1, k - m);
 
         // use quick sort's idea
         // put nums that are <= pivot to the left
         // put nums that are  > pivot to the right
+        /*
+        int pivot = a[hi];
         while (i < j) {
             if (a[i++] > pivot) swap(a, --i, --j);
         }
@@ -48,6 +51,7 @@ public class Kth_215 {
         else if (m > k) return quickSelect(a, lo, i - 1, k);
         // pivot is too small, so it must be on the right
         else            return quickSelect(a, i + 1, hi, k - m);
+        */
     }
 
     private void swap(int[] a, int i, int j) {
