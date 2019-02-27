@@ -1,6 +1,8 @@
+import java.util.HashMap;
+
 public class RomanToInt_13 {
     // My updated solution
-    public int romanToInt(String s) {
+    public static int romanToInt(String s) {
         if(s.isEmpty()) return 0;
         HashMap<Character, Integer> map = new HashMap<>();
         map.put('I', 1);
