@@ -121,7 +121,7 @@ public class Intervals {
         
         return maxLoad;
     }
-}
+
 
 
 
@@ -152,7 +152,7 @@ public class Intervals {
         }
     }
 
-    public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> res = new LinkedList<>();
         for (Interval curInterval : intervals) {
             if (curInterval.end < newInterval.start) res.add(curInterval);
@@ -168,3 +168,4 @@ public class Intervals {
         }
         return res;
     }
+}
