@@ -1,4 +1,7 @@
-class Number_305 {   
+import java.util.ArrayList;
+import java.util.List;
+
+class Number_305 {
   class UnionFind {
     int count; // # of connected components
     int[] parent;
