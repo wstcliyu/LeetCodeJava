@@ -18,7 +18,7 @@ public class Kth_215 {
         // put nums that are >= pivot to the right
         // Use a random pivot and do not need to shuffle the whole array
         
-        swap(nums, j, new Random().nextInt(j-i+1) + i);
+        swap(a, j, new Random().nextInt(j-i+1) + i);
         int pivot = a[hi];
         while (i < j) {
             while (i < j && a[i] < pivot) i++;
@@ -29,8 +29,8 @@ public class Kth_215 {
         
         int m = hi - i + 1;
         if (m == k)     return i;
-        else if (m > k) return quickSelect(nums, i + 1, hi, k);
-        else            return quickSelect(nums, lo, i - 1, k - m);
+        else if (m > k) return quickSelect(a, i + 1, hi, k);
+        else            return quickSelect(a, lo, i - 1, k - m);
 
         // use quick sort's idea
         // put nums that are <= pivot to the left
