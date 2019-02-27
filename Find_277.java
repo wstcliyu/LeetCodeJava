@@ -1,3 +1,7 @@
+class Relation {
+    public boolean knows(int i, int j) {return true;}
+}
+
 public class Find_277 extends Relation {
     public int findCelebrity(int n) {
         int candidate = 0;
