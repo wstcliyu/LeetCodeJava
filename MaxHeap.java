@@ -19,7 +19,9 @@ public class MaxHeap {
         return size;
     }
 
-    public int peek() {
+    public int peek() throws Exception{
+        if (isEmpty())
+            throw new Exception("Heap is empty! Cannot get peek!");
         return ls.get(1);
     }
 
