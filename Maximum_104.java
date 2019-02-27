@@ -1,5 +1,7 @@
 import javafx.util.Pair;
 
+import java.util.LinkedList;
+
 public class Maximum_104 {
 	public int maxDepth(TreeNode root) {
 	    LinkedList<Pair<TreeNode, Integer>> stack = new LinkedList<>();
