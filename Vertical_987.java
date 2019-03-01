@@ -4,6 +4,7 @@ public class Vertical_987 {
     // Second voted solution use HashMap as outer map, and keep track of the minX and maxX
     // Similar with Binary_314
 
+
     // Most voted solution using TreeMap
     TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
     public List<List<Integer>> verticalTraversal(TreeNode root) {
