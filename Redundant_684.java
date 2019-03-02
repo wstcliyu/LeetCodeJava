@@ -1,7 +1,11 @@
 import java.util.Arrays;
 
 public class Redundant_684 {
+    // Time: O(N a(N)) approximately O(N), Space: O(N)
+    // uf.union(x, y) takes (amortized) O(a(N)) time, approximately O(1)
+
     class UnionFind {
+
         private int[] parent, weight;
 
         UnionFind(int N) {
