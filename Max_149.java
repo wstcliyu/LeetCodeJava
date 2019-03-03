@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.awt.Point;
 
 public class Max_149 {
 	public int maxPoints(Point[] points) {
