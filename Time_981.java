@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class Time_981 {
 	Map<String, TreeMap<Integer, String>> M;
 
-    public TimeMap() {
+    public Time_981() {
         M = new HashMap();
     }
 
