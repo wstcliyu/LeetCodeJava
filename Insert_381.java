@@ -7,7 +7,7 @@ public class Insert_381 {
     
 
     /** Initialize your data structure here. */
-    public RandomizedCollection() {
+    public Insert_381() {
         nums = new ArrayList<>();
         locations = new HashMap<>();
         rand = new Random();
