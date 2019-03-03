@@ -7,7 +7,7 @@ public class Insert_380 {
     
 
     /** Initialize your data structure here. */
-    public RandomizedSet() {
+    public Insert_380() {
         nums = new ArrayList<>();
         locations = new HashMap<>();
         rand = new Random();
