@@ -4,7 +4,7 @@ public class Design_622 {
     private int[] A;
 
     /** Initialize your data structure here. Set the size of the queue to be k. */
-    public MyCircularQueue(int k) {
+    public Design_622(int k) {
         size = 0;
         capacity = k;
         A = new int[k];
