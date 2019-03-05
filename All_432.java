@@ -15,7 +15,7 @@ public class All_432 {
     }
 
     /** Initialize your data structure here. */
-    public AllOne() {
+    public All_432() {
         count = new HashMap<>();
         buckets = new HashMap<>();  
         head = new Bucket();
@@ -73,7 +73,7 @@ public class All_432 {
     
     private void removeFromBucket(Bucket curBuc, String key) {
     	if (curBuc.keys == null) return;
-    	
+
     	curBuc.keys.remove(key);
     	if (curBuc.keys.isEmpty()) {
     		curBuc.prev.next = curBuc.next;
