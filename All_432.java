@@ -1,3 +1,8 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class All_432 {
 	Map<String, Integer> count;
     Map<Integer, Bucket> buckets;
