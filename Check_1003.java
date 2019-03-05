@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Check_1003 {
 	// Most voted solution using a stack
 	// Keep a stack, whenever meet 'c',
