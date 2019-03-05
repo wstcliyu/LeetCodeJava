@@ -8,8 +8,14 @@ public class Design_641 {
         capacity = k;
         size = 0;
         A = new int[k];
+
+        // Use this trick so that we do not need method insertEmpty(value)
+        start = 0;
+        end = capacity - 1;
     }
 
+
+    /*
     private boolean insertEmpty(int value) {
     	start = 0;
         end = 0;
@@ -17,11 +23,13 @@ public class Design_641 {
         size++;
         return true;
     }
-    
+    */
+
+
     /** Adds an item at the front of Deque. Return true if the operation is successful. */
     public boolean insertFront(int value) {
         if (isFull()) return false;
-        if (isEmpty()) return insertEmpty(value);
+        // if (isEmpty()) return insertEmpty(value);
         size++;
         start = (start + capacity - 1) % capacity;
         A[start] = value;
@@ -31,7 +39,7 @@ public class Design_641 {
     /** Adds an item at the rear of Deque. Return true if the operation is successful. */
     public boolean insertLast(int value) {
         if (isFull()) return false;
-        if (isEmpty()) return insertEmpty(value);
+        // if (isEmpty()) return insertEmpty(value);
         size++;
         end = (end + 1) % capacity;
         A[end] = value;
