@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Find_1002 {
 	public List<String> commonChars(String[] A) {
         int[] count = new int[26];
