@@ -67,6 +67,30 @@ public class Kth_215 {
     }
 
 
+
+    // Template for quickSort and quickSelect
+    /*
+    private void quickSort(int[] A, int left, int right) {
+        if (left >= right) return;
+        int i = quickSelect(A, left, right);
+        quickSort(A, left, i - 1);
+        quickSort(A, i + 1, right);
+    }
+    
+    private int quickSelect(int[] A, int left, int right) {
+        swap(A, right, left + new Random().nextInt(right - left + 1));
+        int pivot = A[right];
+        int i = left;
+        for (int j = left; j < right; j++) {
+            if (A[j] < pivot) swap(A, i++, j);
+        }
+        swap(A, i, right);
+        return i;
+    }
+    */
+
+
+
     // Min Heap
     // Time: O(n lgk)
     /*
