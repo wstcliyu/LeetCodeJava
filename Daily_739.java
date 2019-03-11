@@ -6,28 +6,17 @@ public class Daily_739 {
         // My first solution using stack
         /*
         int[] res = new int[T.length];
-        ArrayDeque<Integer> noWarmer = new ArrayDeque<>();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
         for (int i = 0; i < T.length; i++) {
-            while (!noWarmer.isEmpty() && T[noWarmer.peek()] < T[i])
-                res[noWarmer.peek()] = i - noWarmer.poll();
-            noWarmer.push(i);
+            while (!stack.isEmpty() && T[i] > T[stack.getLast()]) {
+                int idx = stack.removeLast();
+                res[idx] = i - idx;
+            }
+            stack.addLast(i);
         }
         return res;
         */
-
-        // Most voted solution using stack
-        /*
-        Stack<Integer> stack = new Stack<>();
-        int[] ret = new int[T.length];
-        for(int i = 0; i < T.length; i++) {
-            while(!stack.isEmpty() && T[i] > T[stack.peek()]) {
-                int idx = stack.pop();
-                ret[idx] = i - idx;
-            }
-            stack.push(i);
-        }
-        return ret;
-        */
+        
 
         // Most voted solution using array to approximate stack
         int[] stack = new int[T.length];
