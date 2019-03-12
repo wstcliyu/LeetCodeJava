@@ -3,7 +3,7 @@ import java.util.ArrayDeque;
 
 public class Online_901 {
 	// My first solution
-	// Similar with Daily_739
+	// Similar with Daily_739, Next_496, Next_503
 	ArrayDeque<Point> stack;
     
     public Online_901() {
