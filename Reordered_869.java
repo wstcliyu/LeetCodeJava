@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Reordered_869 {
 	// Time: O(log^2 N)
 	// Because digitCount(N) takes O(log N) time
