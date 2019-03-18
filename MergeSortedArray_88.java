@@ -1,9 +1,29 @@
 import java.util.Arrays;
 
 public class MergeSortedArray_88 {
+    // Since these two arrays are sorted and nums1 has enough space at the end,
+    // We can fill nums1 from the end.
+    // My updated solution
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        // Since these two arrays are sorted and nums1 has enough space at the end,
-        // We can fill nums1 from the end.
+        int i = m - 1, j = n - 1;
+        int k = m + n - 1;
+
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) nums1[k--] = nums1[i--];
+            else nums1[k--] = nums2[j--];
+        }
+        
+        // while (i >= 0) nums1[k--] = nums1[i--];
+        // The above is unnecessary because we are merging them into nums1
+        
+        while (j >= 0) nums1[k--] = nums2[j--];
+    }
+
+
+
+    // 
+    /*
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
         int i = m+n-1;
         int j = m-1;
         int k = n-1;
@@ -28,6 +48,9 @@ public class MergeSortedArray_88 {
             }
         }
     }
+    */
+
+
     public static void main (String args[]) {
         int[] testNums1= {1,2,3,0,0,0};
         int testM = 3;
