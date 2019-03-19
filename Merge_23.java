@@ -24,21 +24,17 @@ public class Merge_23 {
     // Space: O(N) for creating new linked list, O(k) for keeping priority queue
     /*
     public ListNode mergeKLists(ListNode[] lists) {
-        // PriorityQueue<Pair<Integer, ListNode>> heap = new PriorityQueue<>
-        //        (Comparator.comparingInt((Pair<Integer, ListNode> p) -> p.getKey()));
-        PriorityQueue<ListNode> heap = new PriorityQueue<>(Comparator.comparing((ListNode n) -> n.val));
+        PriorityQueue<ListNode> heap = new PriorityQueue<>(Comparator.<ListNode>comparingInt(n -> n.val));
         for (ListNode node : lists) if (node != null) heap.add(node);
         // heap.addAll(Arrays.asList(lists));
         // Because there may be null in lists, we cannot use addAll() to populate our heap
-        ListNode head = new ListNode(0), p = head;
+        ListNode dummy = new ListNode(0), p = dummy;
         while (!heap.isEmpty()) {
             ListNode node = heap.poll();
-            if (node == null) continue;
-            p.next = node;
-            p = p.next;
-            heap.add(node.next);
+            p = p.next = node;
+            if (node.next != null) heap.add(node.next);
         }
-        return head.next;
+        return dummy.next;
     }
     */
 
