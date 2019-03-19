@@ -1,5 +1,23 @@
 public class HIndex_275 {
     public int hIndex(int[] citations) {
+        // My updated solution
+        /*
+        public int hIndex(int[] citations) {
+            int N = citations.length;
+            int l = 1, r = N + 1;
+            while (l < r) {
+                int h = (l + r) / 2;
+                if (citations[N - h] < h)
+                    r = h;
+                else
+                    l = h + 1;
+            }
+            return r - 1;
+        }
+        */
+
+
+
         // Most voted solution
         // The ojective of the loop is to find the critical index i such that (len - i) equals the h-index
         /*
