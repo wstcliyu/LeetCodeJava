@@ -19,7 +19,7 @@ public class Boats_881 {
         while (i <= j) {
             while (i <= j && buckets[i] <= 0) i++;
             while (i <= j && buckets[j] <= 0) j--;
-            if (i > j && buckets[i] == 0) return res;
+            if (i > j) return res;
             res++;
             if (i + j <= limit) buckets[i]--;
             buckets[j]--;
