@@ -1,4 +1,23 @@
 public class Sort_75 {
+    // My updated solution
+    public void sortColors(int[] nums) {
+        int left = 0, right = nums.length - 1;
+        for (int i = 0; i <= right; i++) {
+            if (nums[i] == 0) swap(nums, i, left++);
+            else if (nums[i] == 2) swap(nums, i--, right--);
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+
+
+    // My first solution
+    /*
     public void sortColors(int[] nums) {
         int left = 0, right = nums.length - 1;
         for (int i = 0; i <= right; i++) {
@@ -13,4 +32,5 @@ public class Sort_75 {
         nums[j] ^= nums[i];
         nums[i] ^= nums[j];
     }
+    */
 }
