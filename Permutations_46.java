@@ -29,6 +29,8 @@ public class Permutations_46 {
     }
     */
 
+
+
     // Most voted solution
     /*
     public static List<List<Integer>> permute(int[] nums) {
@@ -51,13 +53,42 @@ public class Permutations_46 {
     }
     */
 
+
+
+    // Rewrite most voted solution
+    public static List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        helper(res, new ArrayList<>(), new boolean[nums.length], nums);
+        return res;
+    }
+
+    private static void helper(List<List<Integer>> res, List<Integer> tmp, boolean[] used, int[] nums) {
+        if (tmp.size() == nums.length) {
+            res.add(new ArrayList<>(tmp));
+        }
+        else {
+            for (int i = 0; i < nums.length; i++) {
+                if (used[i]) continue;
+                tmp.add(nums[i]);
+                used[i] = true;
+                helper(res, tmp, used, nums);
+                tmp.remove(tmp.size() - 1);
+                used[i] = false;
+            }
+        }
+    }
+
+
+
     // Second voted solution (Exchange the elements in array)
     // Very slow because of stream ?
+    /*
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         helper(res, 0, nums);
         return res;
     }
+
     private static void helper(List<List<Integer>> ls, int start, int[] nums) {
         if (start == nums.length) {
             List<Integer> t = Arrays.stream(nums).boxed().collect(Collectors.toList());
@@ -71,11 +102,13 @@ public class Permutations_46 {
             }
         }
     }
+
     private static void swap(int i, int j, int[] nums) {
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
     }
+
     public static void main(String[] args) {
         int[] testNums = {4,2,1};
         List<List<Integer>> res = permute(testNums);
@@ -83,4 +116,5 @@ public class Permutations_46 {
             System.out.println(Arrays.toString(i.toArray()));
         }
     }
+    */
 }
