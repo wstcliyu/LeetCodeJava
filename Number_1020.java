@@ -20,7 +20,7 @@ class Number_1020 {
     
     private int dfs(int i, int j, int[][] A) {
         int R = A.length, C = A[0].length;
-        if (i < 0 || j < 0 || i >= R || j >= C || A[i][j] == 0 || canGetBound) 
+        if (i < 0 || j < 0 || i >= R || j >= C || A[i][j] == 0) 
             return 0;
         if (i == 0 || j == 0 || i == R - 1 || j == C - 1) 
             canGetBound = true;
