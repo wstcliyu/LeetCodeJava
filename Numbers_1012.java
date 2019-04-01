@@ -12,12 +12,12 @@ class Numbers_1012 {
         
         boolean[] used = new boolean[10];
         for (int i = 0; i < n; i++) {
-            int D = digits.get(i);
-            for (int j = i > 0 ? 0 : 1; j < D; j++) {
+            int digit = digits.get(i);
+            for (int j = i > 0 ? 0 : 1; j < digit; j++) {
                 if (!used[j]) res += P(9 - i, n - i - 1);
             }
-            if (used[D]) break;
-            used[D] = true;
+            if (used[digit]) break;
+            used[digit] = true;
         }
         
         return N - res;
