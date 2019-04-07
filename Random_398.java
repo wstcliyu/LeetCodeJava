@@ -1,9 +1,9 @@
 import java.util.Random;
 
 class Random_398 {
-    // Most voted solution using reservoir sampling
+    // Most voted solution using Reservoir Sampling
     // Similar with Linked_382
-    
+
     int[] nums;
     Random rand;
     
