@@ -84,4 +84,39 @@ public class Binary_94 {
         return res;
     }
     */
+
+
+
+
+    // Morrise inorder traversal without changing the structure of the tree
+    /*
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        TreeNode current = root;
+        while (current != null) {
+            if (current.left == null) {
+                res.add(current.val);
+                current = current.right; // move to next right node
+            } else { // has a left subtree
+                TreeNode predecessor = current.left;
+                while (predecessor.right != current && predecessor.right != null) { // find rightmost
+                    predecessor = predecessor.right;
+                }
+                
+                if (predecessor.right == null) { 
+                    // current needs to be put at the right child of predecessor 
+                    predecessor.right = current;
+                    current = current.left;
+                } else { 
+                    // current was previously put at the right child of predecessor
+                    // now we need to unlink them
+                    predecessor.right = null;
+                    res.add(current.val);
+                    current = current.right;
+                }
+            }
+        }
+        return res;
+    }
+    */
 }
