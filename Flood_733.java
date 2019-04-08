@@ -1,16 +1,19 @@
 public class Flood_733 {
     // DFS
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        if (image[sr][sc] != newColor) floodFillHelper(image, sr, sc, newColor, image[sr][sc]);
+        if (image[sr][sc] != newColor) dfs(image, sr, sc, newColor, image[sr][sc]);
         return image;
     }
     
-    private void floodFillHelper(int[][] image, int x, int y, int newColor, int oldCorlor) {
-        if (x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldCorlor) return;
-        floodFillHelper(image, x+1, y, newColor, oldCorlor);
-        floodFillHelper(image, x-1, y, newColor, oldCorlor);
-        floodFillHelper(image, x, y+1, newColor, oldCorlor);
-        floodFillHelper(image, x, y-1, newColor, oldCorlor);
+    private void dfs(int[][] image, int x, int y, int newColor, int oldColor) {
+        if (x < 0 || x >= image.length || y < 0 || y >= image[0].length || image[x][y] != oldColor) return;
+
+        image[x][y] = newColor;
+        
+        dfs(image, x+1, y, newColor, oldColor);
+        dfs(image, x-1, y, newColor, oldColor);
+        dfs(image, x, y+1, newColor, oldColor);
+        dfs(image, x, y-1, newColor, oldColor);
     }
 
 
