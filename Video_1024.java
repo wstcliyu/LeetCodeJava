@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 class Video_1024 {
     public int videoStitching(int[][] clips, int T) {
