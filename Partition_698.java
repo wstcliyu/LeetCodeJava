@@ -86,6 +86,35 @@ class Partition_698 {
 
 
 
+    // Rewrite the above Top-down DP to align with the following Bottom-up DP
+    /*
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        int sum = 0;
+        for (int num : nums) sum += num;
+        if (sum % k != 0) return false;
+        Arrays.sort(nums);
+        Boolean[] memo = new Boolean[1 << nums.length];
+        memo[0] = true;
+        return search(nums, memo, sum / k, (1 << nums.length) - 1, sum);
+    }
+    
+    private boolean search(int[] nums, Boolean[] memo, int target, int used, int todo) {
+        if (memo[used] != null) return memo[used] == true;
+        memo[used] = false;
+        for (int i = 0; i < nums.length && nums[i] <= (todo - 1) % target + 1; i++) {
+            int future = used & (~(1 << i));
+            if (future != used && search(nums, memo, target, future, todo - nums[i])) {
+                memo[used] = true;
+                break;
+            }
+        }
+        return memo[used] == true;
+    }
+    */
+
+
+
+
     // Standard solution #2: Bottom-up DP
     // Slower than Top-down DP
     // Time: O(N * 2^N), Space: O(2^N)
