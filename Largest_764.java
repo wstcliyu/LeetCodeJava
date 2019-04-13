@@ -1,4 +1,4 @@
-class Solution {
+class Largest_764 {
     // Most voted solution using only one extra matrix
     // Time: O(N^2), Space: O(N^2)
     public int orderOfLargestPlusSign(int N, int[][] mines) {
