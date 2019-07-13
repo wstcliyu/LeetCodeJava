@@ -5,10 +5,10 @@ public class Shortest_243 {
         for (int i = 0; i < words.length; i++) {
             if (words[i].equals(word1)) {
                 i1 = i;
-                if (i2 != -1) res = Math.min(res, i1 - i2);
+                if (i2 != -1) res = Math.min(res, i - i2);
             } else if (words[i].equals(word2)) {
                 i2 = i;
-                if (i1 != -1) res = Math.min(res, i1 - i2);
+                if (i1 != -1) res = Math.min(res, i - i1);
             }
         }
         return res;
