@@ -6,8 +6,9 @@ public class Shortest_244 {
 
     public Shortest_244(String[] words) {
         for(int i = 0; i < words.length; i++){
-            map.putIfAbsent(words[i], new ArrayList<>());
-            map.get(words[i]).add(i);
+            // map.putIfAbsent(words[i], new ArrayList<>());
+            // map.get(words[i]).add(i);
+            map.computeIfAbsent(words[i], k -> new ArrayList<>()).add(i);
         }
     }
 
