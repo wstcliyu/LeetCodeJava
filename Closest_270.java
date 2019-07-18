@@ -1,4 +1,5 @@
 class Closest_270 {
+    // Standard solution
     public int closestValue(TreeNode root, double target) {
         int res = root.val;
         while (root != null) {
@@ -12,6 +13,7 @@ class Closest_270 {
 
 
     // My first solution
+    // Compare double with integer
     /*
     public int closestValue(TreeNode root, double target) {
         int prev = Integer.MIN_VALUE;
@@ -29,6 +31,7 @@ class Closest_270 {
             }
         }
         int res = 0;
+
         if (prev != Integer.MIN_VALUE)
             res = prev;
         else
