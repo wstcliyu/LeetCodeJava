@@ -1,7 +1,4 @@
 public class Number_200 {
-    // Also can be solved with BFS. Just define a Tuple class in Java. class Tuple {int x, y; char value;}
-
-
     // https://leetcode.com/problems/number-of-islands/discuss/56354/1D-Union-Find-Java-solution-easily-generalized-to-other-problems
     // Union Find
     public int numIslands(char[][] grid) {
@@ -92,6 +89,49 @@ public class Number_200 {
         dfs(grid, i - 1, j);
         dfs(grid, i, j + 1);
         dfs(grid, i, j - 1);
+    }
+    */
+
+
+
+    // My BFS template
+    /*
+    int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    
+    public int numIslands(char[][] grid) {
+        if (grid.length == 0 || grid[0].length == 0) return 0;
+        int res = 0;
+
+        int m = grid.length;
+        int n = grid[0].length;
+        boolean[][] visited = new boolean[m][n];
+        
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1' && !visited[i][j]) {
+                    res++;
+                    bfs(i, j, grid, visited);
+                }
+            }
+        }
+        return res;
+    }
+    
+    private void bfs(int i, int j, char[][] grid, boolean[][] visited) {
+        visited[i][j] = true;
+        Deque<int[]> q = new ArrayDeque<>();
+        q.add(new int[]{i, j});
+        while (!q.isEmpty()) {
+            int[] start = q.removeFirst();
+            for (int[] dir : directions) {
+                int x = start[0] + dir[0];
+                int y = start[1] + dir[1];
+                if (x >= 0 && y >= 0 && x < grid.length && y < grid[0].length && grid[x][y] == '1' && !visited[x][y]) {
+                    visited[x][y] = true;
+                    q.add(new int[]{x, y});
+                }
+            }
+        }
     }
     */
 }
