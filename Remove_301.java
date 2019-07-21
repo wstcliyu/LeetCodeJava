@@ -1,8 +1,9 @@
 import java.util.*;
 
-class Solution {
+class Remove_301 {
     // Most voted solution
     // https://leetcode.com/problems/remove-invalid-parentheses/discuss/75027/Easy-Short-Concise-and-Fast-Java-DFS-3-ms-solution
+    /*
     public List<String> removeInvalidParentheses(String s) {
         List<String> ans = new ArrayList<>();
         remove(s, ans, 0, 0, new char[]{'(', ')'});
@@ -25,7 +26,7 @@ class Solution {
         else // finished right to left
             ans.add(reversed);
     }
-
+    */
 
 
 
@@ -33,7 +34,6 @@ class Solution {
     // Time: T(n) = n x C(n, n) + (n-1) x C(n, n-1) + ... + 1 x C(n, 1) = n x 2^(n-1)
     // Space: C(n, n/2)
     // https://leetcode.com/problems/remove-invalid-parentheses/discuss/75032/Share-my-Java-BFS-solution
-    /*
     public List<String> removeInvalidParentheses(String s) {
         List<String> res = new ArrayList<>();
         Set<String> visited = new HashSet<>();
@@ -44,7 +44,6 @@ class Solution {
             String str = q.removeFirst();
             if (isValid(str)) {
                 res.add(str);
-                continue;
             }
             
             if (res.size() > 0) continue;
@@ -69,5 +68,4 @@ class Solution {
         }
         return count == 0;
     }
-    */
 }
