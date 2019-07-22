@@ -7,6 +7,7 @@ class Open_752 {
         Set<String> deads = new HashSet<>(Arrays.asList(deadends));
         if (deads.contains("0000")) return -1;
         if (target.equals("0000")) return 0;
+        deads.addAll(Arrays.asList("0000", target));
 
         Set<String> beginSet = new HashSet<>(Arrays.asList("0000"));
         Set<String> endSet = new HashSet<>(Arrays.asList(target));
@@ -17,8 +18,8 @@ class Open_752 {
         if (beginSet.size() == 0) return -1;
         if (beginSet.size() > endSet.size()) return biBFS(endSet, beginSet, deads, step);
 
-        deads.addAll(beginSet);
-        deads.addAll(endSet);
+        // deads.addAll(beginSet);
+        // deads.addAll(endSet);
         
         Set<String> nextSet = new HashSet<>();
         
@@ -29,11 +30,11 @@ class Open_752 {
                 String s2 = s.substring(0, i) + (c == '0' ? 9 : c - '0' - 1) + s.substring(i + 1);
                 if (endSet.contains(s1) || endSet.contains(s2)) return step;
                 if (!deads.contains(s1)) {
-                    // deads.add(s1);
+                    deads.add(s1);
                     nextSet.add(s1);
                 }
                 if (!deads.contains(s2)) {
-                    // deads.add(s2);
+                    deads.add(s2);
                     nextSet.add(s2);
                 }
             }
