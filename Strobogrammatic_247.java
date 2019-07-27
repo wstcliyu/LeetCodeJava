@@ -27,4 +27,32 @@ class Strobogrammatic_247 {
 	    
 	    return res;
 	}
+
+
+
+	// My updated solution using BFS
+	/*
+	public List<String> findStrobogrammatic(int n) {
+        LinkedList<String> q = new LinkedList<>();
+        if (n % 2 == 0) {
+            q.add("");
+        } else {
+            q.addAll(Arrays.asList("0", "1", "8"));
+        }
+        
+        for (int i = 0; i < n/2; i++) {
+            int size = q.size();
+            for (int j = 0; j < size; j++) {
+                String s = q.removeFirst();
+                if (i < n/2 - 1) q.add("0" + s + "0");
+                q.add("1" + s + "1");
+                q.add("8" + s + "8");
+                q.add("6" + s + "9");
+                q.add("9" + s + "6");
+            }
+        }
+        
+        return q;
+    }
+    */
 }
