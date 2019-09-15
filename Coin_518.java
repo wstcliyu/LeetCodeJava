@@ -4,9 +4,8 @@ class Coin_518 {
         int[] dp = new int[amount + 1];
         dp[0] = 1;
         for (int coin : coins)
-            for (int i = 1; i <= amount; i++)
-                if (i >= coin)
-                    dp[i] += dp[i - coin];
+            for (int i = coin; i <= amount; i++)
+                dp[i] += dp[i - coin];
         return dp[amount];
     }
 
