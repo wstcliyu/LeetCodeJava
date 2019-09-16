@@ -1,41 +1,17 @@
 import java.util.*;
 
 public class Longest_3 {
-    // DP with a map storing the index of last appearance of the current character
+    // My updated solution: Longest window, refer to 3, 159, 340, 1004, 424
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) return 0;
-        int res = 0, start = -1;
-        // int[] index = new int[128]; // int[128(256)] for (Extended) ASCII
-        // Arrays.fill(index, -1);
-        HashMap<Character, Integer> index = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            // start = Math.max(start, index[s.charAt(i)]);
-            start = Math.max(start, index.getOrDefault(s.charAt(i), -1));
-            res = Math.max(res, i - start);
-            // index[s.charAt(i)] = i;
-            index.put(s.charAt(i), i);
+        int[] freq = new int[128];
+        int l = 0, r = 0, repeat = 0;
+        for (; r < s.length(); r++) {
+            if (++freq[s.charAt(r)] == 2) repeat++;
+            if (repeat > 0 && --freq[s.charAt(l++)] == 1) repeat--;
         }
-        return res;
+        return r - l;
     }
 
-
-    // Sliding window using set
-    /*
-    public int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        Set<Character> set = new HashSet<>();
-        int ans = 0, i = 0, j = 0;
-        while (i < n && j < n) {
-            if (!set.contains(s.charAt(j))){
-                set.add(s.charAt(j++));
-                ans = Math.max(ans, j - i);
-            }
-            else
-                set.remove(s.charAt(i++));
-        }
-        return ans;
-    }
-    */
 
 
     // Sliding window using map
@@ -60,6 +36,47 @@ public class Longest_3 {
             d = Math.max(d, end - begin);
         }
         return d;
+    }
+    */
+
+
+
+    // Sliding window using set
+    /*
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n) {
+            if (!set.contains(s.charAt(j))){
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            }
+            else
+                set.remove(s.charAt(i++));
+        }
+        return ans;
+    }
+    */
+
+
+
+    // DP with a map storing the index of last appearance of the current character
+    /*
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) return 0;
+        int res = 0, start = -1;
+        // int[] index = new int[128]; // int[128(256)] for (Extended) ASCII
+        // Arrays.fill(index, -1);
+        HashMap<Character, Integer> index = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            // start = Math.max(start, index[s.charAt(i)]);
+            start = Math.max(start, index.getOrDefault(s.charAt(i), -1));
+            res = Math.max(res, i - start);
+            // index[s.charAt(i)] = i;
+            index.put(s.charAt(i), i);
+        }
+        return res;
     }
     */
 }
