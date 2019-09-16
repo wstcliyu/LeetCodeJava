@@ -12,4 +12,19 @@ class Longest_340 {
         }
         return res;
     }
+
+
+
+    // My updated solution: Longest window, refer to 3, 159, 340, 1004, 424
+    /*
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        int left = 0, right = 0, res = 0;
+        int[] freq = new int[128];
+        while (right < s.length()) {
+            if (freq[s.charAt(right++)]++ == 0) k--;
+            if (k < 0 && --freq[s.charAt(left++)] == 0) k++;
+        }
+        return right - left;
+    }
+    */
 }
