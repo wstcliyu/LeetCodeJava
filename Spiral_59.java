@@ -1,37 +1,39 @@
 import java.util.Arrays;
 
 public class Spiral_59 {
-    // Similar with mine
-    /*
+    // Refer to Spiral_54
     public int[][] generateMatrix(int n) {
-        int[][] ret = new int[n][n];
-        int left = 0,top = 0;
-        int right = n -1,down = n - 1;
-        int count = 1;
-        while (left <= right) {
-            for (int j = left; j <= right; j ++) {
-                ret[top][j] = count++;
+        int[][] res = new int[n][n];
+        int step = 1;
+        int top = 0, bottom = n - 1;
+        int left = 0, right = n - 1;
+        while (left <= right && top <= bottom) {
+            for (int j = left; j <= right; j++, step++)
+                res[top][j] = step;
+            top++;
+            
+            for (int i = top; i <= bottom; i++, step++)
+                res[i][right] = step;
+            right--;
+            
+            if (top <= bottom) {
+                for (int j = right; j >= left; j--, step++)
+                    res[bottom][j] = step;
+                bottom--;
             }
-            top ++;
-            for (int i = top; i <= down; i ++) {
-                ret[i][right] = count ++;
+            
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--, step++)
+                    res[i][left] = step;
+                left++;
             }
-            right --;
-            for (int j = right; j >= left; j --) {
-                ret[down][j] = count ++;
-            }
-            down --;
-            for (int i = down; i >= top; i --) {
-                ret[i][left] = count ++;
-            }
-            left ++;
         }
-        return ret;
+        return res;
     }
-    */
 
 
-    // My solution
+    // My first solution
+    /*
     public static int[][] generateMatrix(int n) {           
         int[][] res = new int[n][n];
         int step = 0, x = 0, y = -1;
@@ -50,6 +52,8 @@ public class Spiral_59 {
         }
         return res;
     }
+    */
+
     public static void main (String args[]) {
         System.out.println(Arrays.deepToString(generateMatrix(3)));
     }
