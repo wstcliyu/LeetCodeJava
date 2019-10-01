@@ -1,6 +1,37 @@
 import java.util.*;
 
 public class Course_210 {
+    // Standard solution #2: Topological Sort (BFS)
+    /*
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> adj = new HashMap<>();
+        int[] inDegree = new int[numCourses];
+        for (int[] p : prerequisites) {
+            adj.computeIfAbsent(p[1], k -> new ArrayList<>()).add(p[0]);
+            inDegree[p[0]]++;
+        }
+        Deque<Integer> q = new ArrayDeque<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (inDegree[i] == 0)
+                q.add(i);
+        }
+        int idx = 0;
+        int[] res = new int[numCourses];
+        while (!q.isEmpty()) {
+            int p = q.removeFirst();
+            res[idx++] = p;
+            for (int c : adj.getOrDefault(p, new ArrayList<>())) {
+                if (--inDegree[c] == 0)
+                    q.add(c);
+            }
+        }
+        return idx == numCourses ? res : new int[0];
+    }
+    */
+
+
+
+    // Standard solution #1: Topological Sort (DFS)
     private boolean isCycle;
     private final int WHITE = 1;
     private final int GRAY = 2;
