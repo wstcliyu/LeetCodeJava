@@ -119,4 +119,43 @@ public class Binary_94 {
         return res;
     }
     */
+
+
+
+    // Assume TreeNode has a parent pointer
+    // https://www.geeksforgeeks.org/inorder-non-threaded-binary-tree-traversal-without-recursion-or-stack/
+    /*
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        boolean leftDone = false;
+        while (root != null) {
+            // If the left is not traversed, move to the leftmost node
+            if (!leftDone) {
+                while (root.left != null)
+                    root = root.left;
+            }
+
+            // This node and its left subtree are all traversed
+            res.add(root.val);
+            leftDone = true;
+
+            // Now left subtree is all traversed, move to the right subtree or the parent
+            if (root.right != null) {
+                root = root.right;
+                leftDone = false;
+            } else {
+                // If this node is the right child of its parent,
+                // it means the right subtree of its parent is all traversed
+                // So move to its parent
+                while (root.parent != null && root == root.parent.right)
+                    root = root.parent;
+
+                // If root.parent == null, it means all nodes have been traversed, break the outer loop
+                // If root.parent != null, move to root.parent
+                root = root.parent;
+            }
+        }
+        return res;
+    }
+    */
 }
