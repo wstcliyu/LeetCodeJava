@@ -47,7 +47,7 @@ class First_41 {
             
         
         for (int i = 0; i < N; i++)
-            if (nums[i] > 0)
+            if (nums[i] >= 0)
                 return i;
         return N;
     }
