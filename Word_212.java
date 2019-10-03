@@ -47,4 +47,25 @@ public class Word_212 {
         if (j < board[0].length - 1) dfs(board, i, j+1, p, res);
         board[i][j] = c;
     }
+
+
+
+    // Rewrite dfs method
+    /*
+    private void dfs(char[][] board, int i, int j, TrieNode p, List<String> res) {
+        if (p != null && p.word != null) {
+            res.add(p.word);
+            p.word = null;
+        }
+        if (p == null || i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] == '#') return;
+        char c = board[i][j];
+        p = p.next[c - 'a'];
+        board[i][j] = '#';
+        dfs(board, i + 1, j, p, res);
+        dfs(board, i - 1, j, p, res);
+        dfs(board, i, j + 1, p, res);
+        dfs(board, i, j - 1, p, res);
+        board[i][j] = c;
+    }
+    */
 }
