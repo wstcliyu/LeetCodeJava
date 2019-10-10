@@ -1,5 +1,61 @@
+import java.util.*;
+
 class Stickers_691 {
+    // Rewrite most voted solution: DFS with memoization
+    public int minStickers(String[] stickers, String target) {
+        List<Integer> need = makeList(target);
+        List<List<Integer>> offers = new ArrayList<>();
+        for (String sticker : stickers)
+            offers.add(makeList(sticker));
+        Map<List<Integer>, Integer> memo = new HashMap<>();
+        memo.put(makeList(""), 0);
+        return dfs(need, memo, offers);
+    }
+    
+    private List<Integer> makeList(String str) {
+        int[] count = new int[26];
+        for (char c : str.toCharArray())
+            count[c - 'a']++;
+        List<Integer> ls = new ArrayList<>();
+        for (int num : count) ls.add(num);
+        return ls;
+    }
+    
+    private boolean canImprove(List<Integer> need, List<Integer> offer) {
+        for (int i = 0; i < need.size(); i++) {
+            if (need.get(i) > 0) {
+                return offer.get(i) > 0;
+            }
+        }
+        return false;
+    }
+    
+    private List<Integer> listSubtract(List<Integer> need, List<Integer> offer) {
+        List<Integer> ls = new ArrayList<>();
+        for (int i = 0; i < need.size(); i++) {
+            ls.add(Math.max(0, need.get(i) - offer.get(i)));
+        }
+        return ls;
+    }
+    
+    private int dfs(List<Integer> need, Map<List<Integer>, Integer> memo, List<List<Integer>> offers) {
+        if (memo.containsKey(need))
+            return memo.get(need);
+        int res = Integer.MAX_VALUE;
+        for (List<Integer> offer : offers) {
+            if (canImprove(need, offer)) {
+                int tmp = dfs(listSubtract(need, offer), memo, offers);
+                if (tmp != -1) res = Math.min(res, 1 + tmp);
+            }
+        }
+        memo.put(need, res == Integer.MAX_VALUE ? -1 : res);
+        return memo.get(need);
+    }
+
+
+    
     // My first solution: BFS
+    /*
     class Result {
         boolean improved, finished, visited;
         Result() {
@@ -55,6 +111,7 @@ class Stickers_691 {
         if (!seen.add(need)) r.visited = true;
         return r;
     }
+    */
 
 
 
