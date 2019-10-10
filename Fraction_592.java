@@ -50,6 +50,11 @@ class Fraction_592 {
 
 
     // Most voted solution: Regex
+    // The (?=) part is a zero-width positive lookahead. Since [-,+] means - or +, 
+    // the regex (?=[-,+]) means the next element is either - or +.
+    // Since | is logical or operator, "/|(?=[-+])" means the element is "/", 
+    // or the next element is either - or +. For example, when expression = "-1/2+1/2-1/3", 
+    // generates [-1, 2, +1, 2, -1, 3 ]. Note that the signs - and + are preserved.
     public String fractionAddition(String expression) {
         int A = 0, B = 1;
         String[] S = expression.split("/|(?=[-+])");
