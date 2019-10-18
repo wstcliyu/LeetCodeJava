@@ -4,6 +4,7 @@ public class Delete_583 {
     // My solution using 2D DP (similar with standard solution #4)
     // dp[i][j] denotes the steps needed for word1[i:] and word2[j:]
     // If i == word1.length() || j == word2.length(), it means empty substring
+    /*
     public int minDistance(String word1, String word2) {
         int R = word1.length(), C = word2.length();
         int[][] dp = new int[R + 1][C + 1];
@@ -22,12 +23,13 @@ public class Delete_583 {
         
         return dp[0][0];
     }
+    */
 
 
 
     
     // Standard solution #4
-    /*
+    // Similar to Edit_72
     public int minDistance(String s1, String s2) {
         int[][] dp = new int[s1.length() + 1][s2.length() + 1];
         for (int i = 0; i <= s1.length(); i++) {
@@ -42,8 +44,6 @@ public class Delete_583 {
         }
         return dp[s1.length()][s2.length()];
     }
-    */
-
 
 
 
