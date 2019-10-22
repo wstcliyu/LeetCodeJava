@@ -1,5 +1,22 @@
 public class Jump_45 {
+	// My update solution
+	public int jump(int[] nums) {
+        if (nums.length <= 1) return 0;
+        int res = 0;
+        int cur = 0;
+        for (int pre = -1; cur < nums.length - 1 && cur > pre; res++) {
+            int i = pre + 1;
+            for (pre = cur; i <= pre; i++) {
+                cur = Math.max(cur, i + nums[i]);
+            }
+        }
+        return cur >= nums.length - 1 ? res : -1;
+    }
+
+    
+
 	// My solution (similar with Jump_55)
+	/*
 	public int jump(int[] nums) {
         if (nums.length <= 1) return 0;
         int i = 0, pre_max, cur_max = 0, res = 0;
@@ -11,6 +28,7 @@ public class Jump_45 {
         } while (pre_max < cur_max && cur_max < nums.length - 1);
         return res;
     }
+    */
 
 
     // Most voted solution using BFS (similar thought with mine)
