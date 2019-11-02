@@ -1,7 +1,49 @@
 import java.util.*;
 
 class Word_127 {
+    // My biBFS template (also read 773, 752)
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (!wordList.contains(endWord)) return 0;
+        Set<String> beginSet = new HashSet<>(Arrays.asList(beginWord));
+        Set<String> endSet = new HashSet<>(Arrays.asList(endWord));
+        Set<String> dict = new HashSet<>(wordList);
+        dict.remove(beginWord);
+        dict.remove(endWord);
+        int res = 2;
+        while (!beginSet.isEmpty() && !endSet.isEmpty()) {
+            if (beginSet.size() > endSet.size()) {
+                Set<String> t = beginSet;
+                beginSet = endSet;
+                endSet = t;
+            }
+            Set<String> next = new HashSet<>();
+            for (String b : beginSet) {
+                char[] chs = b.toCharArray();
+                for (int i = 0; i < b.length(); i++) {
+                    char old = chs[i];
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        if (c == old) continue;
+                        chs[i] = c;
+                        String s = new String(chs);
+                        if (endSet.contains(s)) return res;
+                        if (dict.contains(s)) {
+                            next.add(s);
+                            dict.remove(s);
+                        }
+                    }
+                    chs[i] = old;
+                }
+            }
+            beginSet = next;
+            res++;
+        }
+        return 0;
+    }
+
+
+
     // Good submission (very fast): Bidirectional BFS
+    /*
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if(!wordList.contains(endWord)) return 0;
         
@@ -48,7 +90,7 @@ class Word_127 {
         
         return biBFS(nextLevel, endSet, dict, step + 1);
     }
-
+    */
 
 
 
