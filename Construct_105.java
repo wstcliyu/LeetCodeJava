@@ -10,28 +10,27 @@ public class Construct_105 {
         TreeNode root = new TreeNode(preorder[0]);
         st.push(root);
         for (int i = 1, j = 0; i < preorder.length; i++) {
-            TreeNode cur = new TreeNode(preorder[i]);
+            
+            TreeNode node = new TreeNode(preorder[i]);
 
             // 1. Keep pushing the nodes from the preorder into a stack
             // (and keep making the tree by adding nodes to the left of the previous node)
             // until the top of the stack matches the inorder.
             if (inorder[j] != st.peek().val) {
-                st.peek().left = cur;
-                st.push(cur);
-                continue;
+                st.peek().left = node;
+                st.push(node);
+            } else {
+                // 2. Keep popping nodes from the stack until the stack becomes empty or
+                // the top of the stack is different from inorder[j]. Keep track of the last
+                // node popping out of the stack and add current new node to its right.
+                TreeNode pre = st.peek();
+                while (!st.isEmpty() && inorder[j] == st.peek().val) {
+                    pre = st.pop();
+                    j++;
+                }
+                pre.right = node;
+                st.push(node);
             }
-
-            // 2. Keep popping nodes from the stack until the stack becomes empty or
-            // the top of the stack is different from inorder[j]. Keep track of the last
-            // node popping out of the stack and add current new node to its right.
-
-            TreeNode pre;
-            do {
-                pre = st.pop();
-                j++;
-            } while (!st.empty() && inorder[j] == st.peek().val);
-            pre.right = cur;
-            st.push(cur);
         }
         return root;
     }
