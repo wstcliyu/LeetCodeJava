@@ -5,27 +5,25 @@ import java.util.Stack;
 public class Construct_106 {
     // Refer to Construct_105
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        int n = postorder.length;
+        int n = inorder.length;
         if (n == 0) return null;
         Stack<TreeNode> st = new Stack<>();
         TreeNode root = new TreeNode(postorder[n - 1]);
         st.push(root);
         for (int i = n - 2, j = n - 1; i >= 0; i--) {
-            TreeNode cur = new TreeNode(postorder[i]);
-
+            TreeNode node = new TreeNode(postorder[i]);
             if (inorder[j] != st.peek().val) {
-                st.peek().right = cur;
-                st.push(cur);
-                continue;
+                st.peek().right = node;
+                st.push(node);
+            } else {
+                TreeNode pre = st.peek();
+                while (!st.isEmpty() && inorder[j] == st.peek().val) {
+                    pre = st.pop();
+                    j--;
+                }
+                pre.left = node;
+                st.push(node);
             }
-
-            TreeNode pre;
-            do {
-                pre = st.pop();
-                j--;
-            } while (!st.empty() && inorder[j] == st.peek().val);
-            pre.left = cur;
-            st.push(cur);
         }
         return root;
     }
