@@ -1,9 +1,33 @@
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 public class Construct_889 {
-    // Most voted solution using iteration
+    // Refer to Construct_105, Construct_106
+    // Rewrite the most voted solution (following 105, 106)
+    public TreeNode constructFromPrePost(int[] pre, int[] post) {
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode root = new TreeNode(pre[0]);
+        st.push(root);
+        for (int i = 1, j = 0; i < pre.length; i++) {
+            TreeNode node = new TreeNode(pre[i]);
+            if (post[j] != st.peek().val) {
+                st.peek().left = node;
+                st.push(node);
+            } else {
+                while (post[j] == st.peek().val) {
+                    st.pop();
+                    j++;
+                }
+                TreeNode p = st.peek();
+                p.right = node;
+                st.push(node);
+            }
+        }
+        return root;
+    }
+
+
+
+    // Most voted solution from lee215
     // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/discuss/161268/C%2B%2BJavaPython-One-Pass-Real-O(N)
     /*
     public TreeNode constructFromPrePost(int[] pre, int[] post) {
@@ -23,7 +47,26 @@ public class Construct_889 {
     */
 
 
+
+    // Most voted solution from lee215
+    /*
+    int preIndex = 0, posIndex = 0;
+    public TreeNode constructFromPrePost(int[]pre, int[]post) {
+        TreeNode root = new TreeNode(pre[preIndex++]);
+        if (root.val != post[posIndex])
+            root.left = constructFromPrePost(pre, post);
+        if (root.val != post[posIndex])
+            root.right = constructFromPrePost(pre, post);
+        posIndex++;
+        return root;
+    }
+    */
+
+
+
+
     // My first solution using recursion, with a map to save index
+    /*
     HashMap<Integer, Integer> map = new HashMap<>();
 
     public TreeNode constructFromPrePost(int[] pre, int[] post) {
@@ -51,6 +94,7 @@ public class Construct_889 {
         for (int i = 0; i < post.length; i++)
             map.put(post[i], i);
     }
+    */
 
     public static void main(String[] args) {
         Construct_889 test = new Construct_889();
