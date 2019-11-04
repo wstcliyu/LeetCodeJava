@@ -2,7 +2,77 @@ import java.util.PriorityQueue;
 import java.util.Random;
 
 public class Kth_215 {
+    // Min Heap
+    // Time: O(n lgk)
+    /*
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        for (int num : nums) {
+            heap.add(num);
+            if (heap.size() > k) heap.poll();
+        }
+        return heap.peek();
+    }
+    */
+
+
+
+    public int findKthLargest(int[] nums, int k) {
+        return quickSelect(nums, 0, nums.length - 1, k);
+    }
+    
+    private int quickSelect(int[] nums, int start, int end, int k) {
+        swap(nums, end, start + new Random().nextInt(end - start + 1));
+        int pivot = nums[end];
+        int i = start;
+        for (int j = start; j < end; j++) {
+            if (nums[j] > pivot)
+                swap(nums, i++, j);
+        }
+        
+        swap(nums, i, end);
+
+        if (i - start == k - 1)
+            return nums[i];
+        else if (i - start > k - 1)
+            return quickSelect(nums, start, i - 1, k);
+        else
+            return quickSelect(nums, i + 1, end, k - i + start - 1);
+    }
+    
+    private void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
+
+
+
+    // Template for quickSort and quickSelect
+    /*
+    private void quickSort(int[] A, int left, int right) {
+        if (left >= right) return;
+        int i = quickSelect(A, left, right);
+        quickSort(A, left, i - 1);
+        quickSort(A, i + 1, right);
+    }
+    
+    private int quickSelect(int[] A, int left, int right) {
+        swap(A, right, left + new Random().nextInt(right - left + 1));
+        int pivot = A[right];
+        int i = left;
+        for (int j = left; j < right; j++) {
+            if (A[j] < pivot) swap(A, i++, j);
+        }
+        swap(A, i, right);
+        return i;
+    }
+    */
+
+
+
     // Quick Select
+    /*
     public int findKthLargest(int[] a, int k) {
         // shuffle(a);
         int n = a.length;
@@ -32,10 +102,10 @@ public class Kth_215 {
         else if (m > k) return quickSelect(a, i + 1, hi, k);
         else            return quickSelect(a, lo, i - 1, k - m);
 
+
         // use quick sort's idea
         // put nums that are <= pivot to the left
         // put nums that are  > pivot to the right
-        /*
         int pivot = a[hi];
         while (i < j) {
             if (a[i++] > pivot) swap(a, --i, --j);
@@ -51,7 +121,6 @@ public class Kth_215 {
         else if (m > k) return quickSelect(a, lo, i - 1, k);
         // pivot is too small, so it must be on the right
         else            return quickSelect(a, i + 1, hi, k - m);
-        */
     }
 
     private void swap(int[] a, int i, int j) {
@@ -64,43 +133,6 @@ public class Kth_215 {
         Random random = new Random();
         for (int i = 0; i < a.length; i++)
             swap(a, i, random.nextInt(i + 1));
-    }
-
-
-
-    // Template for quickSort and quickSelect
-    /*
-    private void quickSort(int[] A, int left, int right) {
-        if (left >= right) return;
-        int i = quickSelect(A, left, right);
-        quickSort(A, left, i - 1);
-        quickSort(A, i + 1, right);
-    }
-    
-    private int quickSelect(int[] A, int left, int right) {
-        swap(A, right, left + new Random().nextInt(right - left + 1));
-        int pivot = A[right];
-        int i = left;
-        for (int j = left; j < right; j++) {
-            if (A[j] < pivot) swap(A, i++, j);
-        }
-        swap(A, i, right);
-        return i;
-    }
-    */
-
-
-
-    // Min Heap
-    // Time: O(n lgk)
-    /*
-    public int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> heap = new PriorityQueue<>();
-        for (int num : nums) {
-            heap.add(num);
-            if (heap.size() > k) heap.poll();
-        }
-        return heap.peek();
     }
     */
 }
