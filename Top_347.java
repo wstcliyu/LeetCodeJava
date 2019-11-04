@@ -11,11 +11,15 @@ public class Top_347 {
         for (int n: nums) count.put(n, count.getOrDefault(n, 0) + 1);
 
         // init heap 'the less frequent element first'
-        PriorityQueue<Integer> minHeap =
-                new PriorityQueue<Integer>((n1, n2) -> count.get(n1) - count.get(n2));
-        // My version
-        // PriorityQueue<Integer> minHeap =
-        //        new PriorityQueue<Integer>(k+1, Comparator.comparing((Integer i) -> count.get(i)));
+        // PriorityQueue<Integer> minHeap = new PriorityQueue<>((n1, n2) -> count.get(n1) - count.get(n2));
+        // PriorityQueue<Integer> minHeap = new PriorityQueue<>(Comparator.comparing(i -> count.get(i)));
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(new Comparator<Integer>(){
+            @Override
+            public int compare(Integer a, Integer b) {
+                return count.get(a) - count.get(b);
+            }
+        });
 
 
         // keep k top frequent elements in the heap
