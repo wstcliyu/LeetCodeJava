@@ -31,52 +31,48 @@ public class Course_210 {
 
 
 
-    // Standard solution #1: Topological Sort (DFS)
+    // Rewrite standard solution #1: Topological Sort (DFS)
+    private static final int WHITE = 0;
+    private static final int GREY = 1;
+    private static final int BLACK = 2;
     private boolean isCycle;
-    private final int WHITE = 1;
-    private final int GRAY = 2;
-    private final int BLACK = 3;
-
-    private int[] color;
-    private Map<Integer, List<Integer>> adj;
-    private List<Integer> topOrder;
-
-    private void init(int numCourses, int[][] prerequisites) {
-        adj = new HashMap<>();
-        for (int[] p : prerequisites) {
-            adj.computeIfAbsent(p[1], new ArrayList<>()).add(p[0]);
-        }
-        topOrder = new ArrayList<>();
-        color = new int[numCourses];
-        Arrays.fill(color, WHITE);
+    private int[] topOrder, color;
+    private int idx;
+    private Map<Integer, List<Integer>> graph;
+    
+    private void init(int n, int[][] prerequisites) {
         isCycle = false;
+        topOrder = new int[n];
+        color = new int[n];
+        idx = n - 1;
+        graph = new HashMap<>();
+        for (int[] p : prerequisites) {
+            graph.computeIfAbsent(p[1], k -> new ArrayList<>()).add(p[0]);
+        }
     }
-
-    private void dfs(int node) {
+    
+    private void dfs(int i) {
         if (isCycle) return;
-        color[node] = GRAY;
-        for (int i : adj.getOrDefault(node, new ArrayList<>())) {
-            if (color[i] == WHITE) {
-                dfs(i);
-            } else if (color[i] == GRAY) {
-                isCycle = true;
-                return;
+        color[i] = GREY;
+        if (graph.containsKey(i)) {
+            for (int c : graph.get(i)) {
+                if (color[c] == WHITE) {
+                    dfs(c);
+                } else if (color[c] == GREY) {
+                    isCycle = true;
+                    return;
+                }
             }
         }
-        topOrder.add(node);
-        color[node] = BLACK;
+        color[i] = BLACK;
+        topOrder[idx--] = i;
     }
-
+    
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         init(numCourses, prerequisites);
-        for (int i = 0; i < numCourses && !isCycle; i++)
+        for (int i = 0; !isCycle && i < numCourses; i++)
             if (color[i] == WHITE)
                 dfs(i);
-        if (isCycle)
-            return new int[0];
-        int[] res = new int[numCourses];
-        for (int i = 0; i < numCourses; i++)
-            res[i] = topOrder.get(numCourses - 1 - i);
-        return res;
+        return isCycle ? new int[0] : topOrder;
     }
 }
