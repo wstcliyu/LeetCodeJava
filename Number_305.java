@@ -2,6 +2,68 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Number_305 {
+  // My solution: Union Find
+  class UF {
+        int size;
+        int[] parent;
+
+        UF(int N) {
+            size = 0;
+            parent = new int[N];
+            Arrays.fill(parent, -1);
+        }
+        
+        int find(int x) {
+            if (x != parent[x])
+                parent[x] = find(parent[x]);
+            return parent[x];
+        }
+        
+        void union(int x, int y) {
+            int px = find(x);
+            int py = find(y);
+            if (px != py) {
+                parent[py] = px;
+                size--;
+            }
+        }
+        
+        boolean add(int x) {
+            if (parent[x] == -1) {
+                parent[x] = x;
+                size++;
+                return true;
+            }
+            return false;
+        }
+    }
+    
+    public List<Integer> numIslands2(int m, int n, int[][] positions) {
+        UF uf = new UF(m * n);
+        List<Integer> res = new ArrayList<>();
+        int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for (int[] p : positions) {
+            int c1 = n * p[0] + p[1];
+            if (uf.add(c1)) {
+                for (int[] d : directions) {
+                    int x = d[0] + p[0];
+                    int y = d[1] + p[1];
+                    int c2 = n * x + y;
+                    if (x >= 0 && x < m && y >= 0 && y < n && uf.parent[c2] != -1) {
+                        uf.union(c1, c2);
+                    }
+                }
+            }
+            
+            res.add(uf.size);
+        }
+        return res;
+    }
+
+
+
+
+  /*
   class UnionFind {
     int count; // # of connected components
     int[] parent;
@@ -89,4 +151,5 @@ class Number_305 {
 
     return ans;
   }
+  */
 }
