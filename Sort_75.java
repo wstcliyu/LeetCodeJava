@@ -1,5 +1,18 @@
 public class Sort_75 {
+    // Most voted solution
+    public void sortColors(int[] nums) {
+        int n = nums.length;
+        int i = 0, j = n - 1;
+        for (int k = 0; k <= j; k++) {
+            while (nums[k] == 2 && k < j) swap(nums, k, j--);
+            while (nums[k] == 0 && k > i) swap(nums, k, i++);
+        }
+    }
+
+
+
     // My updated solution
+    /*
     public void sortColors(int[] nums) {
         int left = 0, right = nums.length - 1;
         for (int i = 0; i <= right; i++) {
@@ -13,6 +26,7 @@ public class Sort_75 {
         nums[i] = nums[j];
         nums[j] = tmp;
     }
+    */
 
 
 
