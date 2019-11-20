@@ -25,8 +25,7 @@ public class Serialize_297 {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        LinkedList<String> nodes = new LinkedList<>();
-        nodes.addAll(Arrays.asList(data.split(spliter)));
+        LinkedList<String> nodes = new LinkedList<>(Arrays.asList(data.split(spliter)));
         return deserialize(nodes);
     }
 
@@ -69,7 +68,7 @@ public class Serialize_297 {
         for (int i = 1; i < nodes.length; i++) {
             TreeNode cur = st.peek();
             TreeNode child = nodes[i].equals(NN) ? null : new TreeNode(Integer.valueOf(nodes[i]));
-            if (cur.left != null || nodes[i - 1].equals(NN))
+            if (nodes[i - 1].equals(NN))
                 st.pop().right = child;
             else
                 cur.left = child;
