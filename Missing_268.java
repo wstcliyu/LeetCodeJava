@@ -5,15 +5,19 @@ import java.util.Set;
 public class Missing_268 {
 
     public int missingNumber(int[] nums) {
-        int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            int pos = Math.abs(nums[i]) - 1;
-            if (pos >= 0 && pos < n) {
-                nums[pos] *= -1;
-                if (nums[pos] == 0) nums[pos] = -n-1;
+        boolean hasZero = false;
+        for (int v : nums) {
+            if (v < 0) v = - v - 1;
+            if (v == 0) {
+                hasZero = true;
+            } else {
+                nums[v - 1] = - nums[v - 1] - 1;
             }
         }
-        for (int i = 0; i < n; i++) if (nums[i] > 0) return i + 1;
+        if (!hasZero) return 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= 0) return i + 1;
+        }
         return 0;
     }
 
