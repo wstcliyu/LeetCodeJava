@@ -83,6 +83,8 @@ public class Serialize_297 {
     // Iterative BFS
     /*
     public String serialize(TreeNode root) {
+        // Cannot use Deque, ArrayDeque here
+        // q.add(e) throws nullpointer exception when e is null
         Queue<TreeNode> q = new LinkedList<>();
         StringBuilder res = new StringBuilder();
         q.add(root);
