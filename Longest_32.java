@@ -64,7 +64,7 @@ class Longest_32 {
             }
             if (left == right) {
                 maxlength = Math.max(maxlength, 2 * right);
-            } else if (right >= left) {
+            } else if (right > left) {
                 left = right = 0;
             }
         }
@@ -77,7 +77,7 @@ class Longest_32 {
             }
             if (left == right) {
                 maxlength = Math.max(maxlength, 2 * left);
-            } else if (left >= right) {
+            } else if (left > right) {
                 left = right = 0;
             }
         }
