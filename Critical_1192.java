@@ -1,6 +1,10 @@
 class Critical_1192 {
 	// Tarjan's algorithm
 	// https://leetcode.com/problems/critical-connections-in-a-network/discuss/382632/Java-implementation-of-Tarjan-Algorithm-with-explanation
+	// https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
+	// https://blog.csdn.net/qq_34374664/article/details/77488976
+	// disc[u] records the time when u was discovered
+	// low[u] records the smallest index of any node known to be reachable from u through u's DFS subtree, including u itself
 	public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
 		int[] disc = new int[n], low = new int[n];
 		// use adjacency list instead of matrix will save some memory, adjmatrix will cause MLE
