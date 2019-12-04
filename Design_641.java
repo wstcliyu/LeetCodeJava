@@ -1,48 +1,33 @@
 public class Design_641 {
-	private int size, capacity;
+    // Updated solution: [start, end)
+    private int size, capacity;
     private int start, end;
     private int[] A;
 
     /** Initialize your data structure here. Set the size of the deque to be k. */
-    public Design_641(int k) {
+    public MyCircularDeque(int k) {
         capacity = k;
         size = 0;
         A = new int[k];
-
-        // Use this trick so that we do not need method insertEmpty(value)
         start = 0;
-        end = capacity - 1;
-    }
-
-
-    /*
-    private boolean insertEmpty(int value) {
-    	start = 0;
         end = 0;
-        A[0] = value;
-        size++;
-        return true;
     }
-    */
-
-
+    
     /** Adds an item at the front of Deque. Return true if the operation is successful. */
     public boolean insertFront(int value) {
         if (isFull()) return false;
-        // if (isEmpty()) return insertEmpty(value);
-        size++;
         start = (start + capacity - 1) % capacity;
         A[start] = value;
+        size++;
         return true;
     }
     
     /** Adds an item at the rear of Deque. Return true if the operation is successful. */
     public boolean insertLast(int value) {
         if (isFull()) return false;
-        // if (isEmpty()) return insertEmpty(value);
+        A[end] = value;
         size++;
         end = (end + 1) % capacity;
-        A[end] = value;
         return true;
     }
     
@@ -71,7 +56,7 @@ public class Design_641 {
     /** Get the last item from the deque. */
     public int getRear() {
         if (isEmpty()) return -1;
-        return A[end];
+        return A[(end + capacity - 1) % capacity];
     }
     
     /** Checks whether the circular deque is empty or not. */
@@ -83,6 +68,72 @@ public class Design_641 {
     public boolean isFull() {
         return size == capacity;
     }
+
+    /*
+	private int size, capacity;
+    private int start, end;
+    private int[] A;
+
+    public Design_641(int k) {
+        capacity = k;
+        size = 0;
+        A = new int[k];
+
+        // Use this trick so that we do not need method insertEmpty(value)
+        start = 0;
+        end = capacity - 1;
+    }
+
+
+    public boolean insertFront(int value) {
+        if (isFull()) return false;
+        // if (isEmpty()) return insertEmpty(value);
+        size++;
+        start = (start + capacity - 1) % capacity;
+        A[start] = value;
+        return true;
+    }
+    
+    public boolean insertLast(int value) {
+        if (isFull()) return false;
+        // if (isEmpty()) return insertEmpty(value);
+        size++;
+        end = (end + 1) % capacity;
+        A[end] = value;
+        return true;
+    }
+    
+        if (isEmpty()) return false;
+        size--;
+        start = (start + 1) % capacity;
+        return true;
+    }
+    
+    public boolean deleteLast() {
+        if (isEmpty()) return false;
+        size--;
+        end = (end + capacity - 1) % capacity;
+        return true;
+    }
+    
+    public int getFront() {
+        if (isEmpty()) return -1;
+        return A[start];
+    }
+    
+    public int getRear() {
+        if (isEmpty()) return -1;
+        return A[end];
+    }
+    
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    
+    public boolean isFull() {
+        return size == capacity;
+    }
+    */
 
 
     public static void main(String[] args) {
